@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>证书详情</title>
+<meta name="viewport" ocntent="width=device-width,inital-scale=.0">
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" th:href="@{/css/certificate.css}" />
+<link rel="shortcut icon" th:href="@{/images/favicon.ico}" type="image/x-icon" />
+<script type="text/javascript" th:src="@{/js/jquery-1.11.2.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}" th:sr></script>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<h3 class="text-center"><b>中国保护消费者基金会</b></h3>
+				<h3 class="text-center m40">商品资质合规识别<strong>INCC</strong>电子凭证</h3>
+				<p class="validation m40">经INCC验证,下述商品资质齐备,符合国家监管部门对此类商品上市流通的要求和有关规范。特授予此商品<b>资质合规识别INCC标识</b>。</p>
+				<dl class="dl-horizontal" id="product">
+					<dt>商品名称：</dt><dd th:text="${certificate.proName}"></dd>
+					<dt>出品机构：</dt><dd th:text="${certificate.produceName}"></dd>
+					<dt>品牌名称：</dt><dd th:text="${certificate.brandName}"></dd>
+					<dt>有 效 期：</dt><dd th:text="${certificate.startDt}"></dd>
+				</dl>
+				<p class="intro m40">商品详细资质信息,识别下图二维码查看。</p>
+				<div class="INCC m40">
+					<div class="logo"><img th:src="@{../images/certificate/logo.jpg}" width="336" height="115" alt=""/></div>
+					<div class="QR">
+						<img th:src="${certificate.ewmPath}" width="115" height="115">
+					</div>
+				</div>
+				<ul class="list-unstyled text-right small m40">
+					<li>中国信息消费者基金会 INCC</li>
+					<li>www.cfcp-incc.org</li>
+					<li><span th:text="${certificate.awardDt}" /></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

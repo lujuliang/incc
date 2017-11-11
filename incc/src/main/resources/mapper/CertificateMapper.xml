@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="online.incc.mapper.CertificateMapper">
+  <resultMap id="BaseResultMap" type="online.incc.model.Certificate">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="pro_id" jdbcType="INTEGER" property="proId" />
+    <result column="pro_name" jdbcType="VARCHAR" property="proName" />
+    <result column="produce_name" jdbcType="VARCHAR" property="produceName" />
+    <result column="brand_name" jdbcType="VARCHAR" property="brandName" />
+    <result column="start_dt" jdbcType="VARCHAR" property="startDt" />
+    <result column="end_dt" jdbcType="VARCHAR" property="endDt" />
+    <result column="ewm_path" jdbcType="VARCHAR" property="ewmPath" />
+    <result column="award_org" jdbcType="VARCHAR" property="awardOrg" />
+    <result column="award_dt" jdbcType="VARCHAR" property="awardDt" />
+  </resultMap>
+</mapper>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="online.incc.mapper.InspectionInfoMapper">
+  <resultMap id="BaseResultMap" type="online.incc.model.InspectionInfo">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="pro_id" jdbcType="INTEGER" property="proId" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="insp_org" jdbcType="VARCHAR" property="inspOrg" />
+    <result column="result" jdbcType="VARCHAR" property="result" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+  </resultMap>
+</mapper>

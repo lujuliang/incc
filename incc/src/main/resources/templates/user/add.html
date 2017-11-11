@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" th:href="@{/css/jquery.dataTables.min.css}" />
+<link rel="stylesheet" th:href="@{/css/matrix-style.css}" />
+<link rel="stylesheet" th:href="@{/css/matrix-media.css}" />
+<link rel="stylesheet" th:href="@{/css/fileinput.min.css}" />
+<link th:href="@{/font-awesome/css/font-awesome.css}" rel="stylesheet" />
+<title>添加</title>
+</head>
+<body>
+
+	<!--Header-part-->
+	<div id="header">
+		<h1>
+			<a href="dashboard.html">Matrix Admin</a>
+		</h1>
+	</div>
+	<!--close-Header-part-->
+
+	<!--top-Header-menu-->
+	<div th:include="common/top :: top"></div>
+	<div th:include="common/menu :: menu"></div>
+
+	<div id="content">
+
+		<div id="addUser" tabindex="-1">
+			<div role="document">
+				<div>
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="addroleLabel">添加用户</h4>
+					</div>
+					<div class="modal-body">
+						<form id="userForm">
+							<div class="form-group">
+								<label class="control-label">用户名:</label> <input type="text"
+									class="form-control" name="user.username" id="username"
+									placeholder="请输入用户名" /> <span
+									class="btn-action single glyphicons circle_question_mark"
+									data-toggle="tooltip" data-placement="top"
+									data-original-title="必填"><i></i></span>
+							</div>
+							<div class="form-group">
+								<label class="control-label">密码:</label> <input type="password"
+									class="form-control" id="password" name="user.password"
+									placeholder="请输入密码 6位以上" />
+							</div>
+							<div class="form-group">
+								<label class="control-label">pic:</label> <input type="file"
+									class="form-control" id="file" name="file" />
+							</div>
+							<div class="form-group">
+								<label class="control-label">review</label> <img id="img" />
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="button" id="btnAdd" class="btn btn-primary">Save</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--Footer-part-->
+	<div class="row-fluid">
+		<div id="footer" class="span12">
+			2017 &copy; yqj <a href="http://themedesigner.in/">Themedesigner.in</a>
+		</div>
+	</div>
+	<!--end-Footer-part-->
+	<script type="text/javascript" th:src="@{/js/jquery-1.11.2.min.js}"></script>
+	<script th:src="@{/js/bootstrap.min.js}" th:sr></script>
+	<script th:src="@{/js/fileinput.min.js}" th:sr></script>
+	<script th:src="@{/js/zh.js}" th:sr></script>
+	<script th:src="@{/js/jquery.dataTables.min.js}"></script>
+	<script th:src="@{/js/layer.js}"></script>
+	<script type="text/javascript">
+		var table;
+		$(document).ready(function() {	
+			$('#file').fileinput({
+                language: 'zh', //设置语言
+                allowedFileExtensions : ['jpg', 'png','gif'],//接收的文件后缀,
+                maxFileCount: 100,
+                enctype: 'multipart/form-data',
+                showUpload: true, //是否显示上传按钮
+                showCaption: false,//是否显示标题
+                browseClass: "btn btn-primary", //按钮样式             
+                previewFileIcon: "<i class='glyphicon glyphicon-king'></i>", 
+                msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
+            });
+			
+			$("#btnAdd").click(function(){
+				var username = $("#username").val();
+				var password = $("#password").val();
+				if (username == "" || username == undefined
+						|| username == null) {
+					return layer.msg('用户名不能为空', function() {
+						//关闭后的操作
+					});
+				}
+				if (password != null && (password.length<6||password.length>= 16)) {
+					return layer.msg('密码长度为6-16', function() {
+						//关闭后的操作
+					});
+				}
+
+				var form = $('#userForm')[0];
+				var data = new FormData(form);
+				$.ajax({
+					cache : false,
+					enctype : "multipart/form-data",
+					type : "POST",
+					url : '../users/add',
+					data : data,// 你的formid
+					processData : false,
+					contentType : false,
+					success : function(data) {
+						if (data == "success") {
+							layer.msg('保存成功');
+							table.ajax.reload();
+							$('#addUser').modal('hide');
+						} else if (data = "error") {
+							layer.msg('该用户已存在');
+							$('#addUser').modal('hide');
+						} else {
+							layer.msg('保存失败');
+							$('#addUser').modal('hide');
+						}
+					}
+				});
+			});
+			
+			
+	 		$("#file").change(function(){
+	 			 var imgFile = this.files[0];
+	 			    var fr = new FileReader();
+	 			    fr.onload = function() {
+	 			        $("#img")[0].src = fr.result;
+	 			    };
+	 			    fr.readAsDataURL(imgFile);
+	 		});
+		});
+	</script>
+
+</body>
+</html>

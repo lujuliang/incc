@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="online.incc.mapper.ApprovalInfoMapper">
+  <resultMap id="BaseResultMap" type="online.incc.model.ApprovalInfo">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="pro_id" jdbcType="INTEGER" property="proId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="audit_num" jdbcType="VARCHAR" property="auditNum" />
+    <result column="dt_term" jdbcType="VARCHAR" property="dtTerm" />
+    <result column="approv_org" jdbcType="VARCHAR" property="approvOrg" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="pic_path" jdbcType="VARCHAR" property="picPath" />
+  </resultMap>
+</mapper>

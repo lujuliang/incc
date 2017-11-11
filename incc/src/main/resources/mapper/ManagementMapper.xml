@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="online.incc.mapper.ManagementMapper">
+  <resultMap id="BaseResultMap" type="online.incc.model.Management">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="start_dt" jdbcType="VARCHAR" property="startDt" />
+    <result column="end_dt" jdbcType="VARCHAR" property="endDt" />
+    <result column="permit" jdbcType="VARCHAR" property="permit" />
+    <result column="credit_code" jdbcType="VARCHAR" property="creditCode" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="create_dt" jdbcType="VARCHAR" property="createDt" />
+  </resultMap>
+</mapper>

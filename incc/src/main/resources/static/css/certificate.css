@@ -1,0 +1,77 @@
+@charset "utf-8";
+/* CSS Document */
+body,html{
+	margin: 0 auto;
+	font-family: "微软雅黑",Segoe, Segoe UI, DejaVu Sans, Trebuchet MS, Verdana," sans-serif";
+	font-size:14x;
+	line-height: 1.5;
+}
+
+h3 strong{color:red;}
+
+.container{
+	width:627px;
+	background:url(../images/certificate/bg.jpg) left top repeat;
+	position: relative
+}
+
+.container > .row{
+	padding-top:60px;
+	background:url(../images/certificate/backGround.gif) left top no-repeat;
+}
+
+.container:after,.container::after{
+	position:absolute;
+	left:0xpx;
+	right:0;
+	bottom:-25px;
+	background:url(../images/certificate/bottom.gif) left top no-repeat;
+	content:" ";
+	width:627px;
+	height:25px;
+}
+
+.validation{
+	font-size: 16px;
+}
+
+.validation b,#product dd{
+	font-weight: bold;
+	text-decoration: underline
+}
+
+#product{margin-bottom:0;}
+
+#product dt{
+	font-weight:normal;
+	width: 74px;
+	text-align: left;
+}
+
+#product dd{
+	margin-left: 74px;
+}
+
+.fontNormal{
+	font-weight:normal;
+}
+
+.m40{
+	margin-bottom: 40px;
+}
+
+.INCC{
+	padding:5px;
+	overflow:hidden;
+	background-color:white;
+	border:1px solid #d6d6d6;
+}
+
+.INCC .logo,.INCC .QR{
+	padding:5px;
+	border:1px solid #d6d6d6;
+	float:left;
+	margin-right:5px;
+}
+
+.INCC .QR{margin-right:0;}
