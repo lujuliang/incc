@@ -1,9 +1,16 @@
 package online.incc.model;
 
+import java.io.Serializable;
+
 import javax.persistence.*;
 
-public class Producer {
-    @Id
+public class Producer implements Serializable{
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 490463489038841755L;
+
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 

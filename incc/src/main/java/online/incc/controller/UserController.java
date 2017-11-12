@@ -48,7 +48,7 @@ public class UserController {
         return map;
     }
 
-    @RequestMapping("/name/{username}")
+    @RequestMapping("/{username}")
     public SysUser getAll(@PathVariable String username){
     	return userService.selectByUsername(username);
     }

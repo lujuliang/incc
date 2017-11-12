@@ -19,4 +19,28 @@
     <result column="create_dt" jdbcType="VARCHAR" property="createDt" />
     <result column="inspection_report_path" jdbcType="VARCHAR" property="inspectionReportPath" />
   </resultMap>
+  
+  <resultMap id="ProductInfoMap" type="online.incc.vo.ProductVO">
+    <result column="pro_name" jdbcType="VARCHAR" property="proName" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="brand_name" jdbcType="VARCHAR" property="brandName" />
+    <result column="produce_name" jdbcType="VARCHAR" property="produceName" />
+    <result column="start_dt" jdbcType="VARCHAR" property="startDt" />
+    <result column="end_dt" jdbcType="VARCHAR" property="endDt" />
+    <result column="pic_path" jdbcType="VARCHAR" property="picPath" />
+    <result column="brand_id" jdbcType="INTEGER" property="brandId" />
+    <result column="produce_id" jdbcType="INTEGER" property="produceId" />
+    <result column="management_id" jdbcType="INTEGER" property="manangmentId" />
+    <result column="award_dt" jdbcType="VARCHAR" property="awardDt" />
+    <result column="inspection_report_path" jdbcType="VARCHAR" property="insPath" />
+  </resultMap>
+  
+  <select id="selectProductInfoByKey" parameterType="int" resultMap="ProductInfoMap">
+    select p.pro_name ,p.type, b.name brand_name,d.name produce_name,
+           p.start_dt,p.end_dt,p.pic_path ,p.brand_id,p.produce_id,p.management_id,
+           c.award_dt,p.inspection_report_path
+    from product p , brand b, producer d ,certificate c
+    where p.pro_id =#{proId} and p.brand_id = b.id and p.produce_id = d.id and p.pro_id = c.pro_id
+  </select>
+  
 </mapper>

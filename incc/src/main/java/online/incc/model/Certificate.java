@@ -1,9 +1,16 @@
 package online.incc.model;
 
+import java.io.Serializable;
+
 import javax.persistence.*;
 
-public class Certificate {
-    @Id
+public class Certificate implements Serializable{
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -5536979338429512484L;
+
+	@Id
     @Column(name = "pro_id")
     private Integer proId;
 

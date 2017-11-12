@@ -1,9 +1,17 @@
 package online.incc.model;
 
+import java.io.Serializable;
+
 import javax.persistence.*;
 
-public class Management {
-    @Id
+public class Management implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7746332338033879935L;
+
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 

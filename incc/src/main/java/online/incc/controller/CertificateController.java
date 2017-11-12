@@ -5,7 +5,6 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,8 +13,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.github.pagehelper.PageInfo;
+
 import online.incc.model.Certificate;
 import online.incc.service.CertificateService;
+import online.incc.service.ProductService;
 
 /**
  * 
@@ -26,6 +27,9 @@ import online.incc.service.CertificateService;
 public class CertificateController {
     @Resource
     private CertificateService certificateService;
+    
+    @Resource
+    private ProductService productService;
     
 	@RequestMapping("/certificate/certificates")
 	@ResponseBody

@@ -1,10 +1,17 @@
 package online.incc.model;
 
+import java.io.Serializable;
+
 import javax.persistence.*;
 
 @Table(name = "approval_info")
-public class ApprovalInfo {
-    @Id
+public class ApprovalInfo implements Serializable{
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 3384997630760327493L;
+
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 

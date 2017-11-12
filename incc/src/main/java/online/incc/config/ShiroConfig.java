@@ -97,12 +97,12 @@ public class ShiroConfig {
         List<SysResources> resourcesList = resourcesService.queryAll();
          for(SysResources resources:resourcesList){
 
-            if (StringUtil.isNotEmpty(resources.getResurl()) && !resources.getResurl().contains("users/name")) {
+            if (StringUtil.isNotEmpty(resources.getResurl()) && !resources.getResurl().contains("ewmInfo")) {
                 String permission = "perms[" + resources.getResurl()+ "]";
                 filterChainDefinitionMap.put(resources.getResurl(),permission);
             }
         }
-        filterChainDefinitionMap.put("/users/**", "anon");
+        filterChainDefinitionMap.put("/ewm/**", "anon");
         filterChainDefinitionMap.put("/**", "authc");
 
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);

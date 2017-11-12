@@ -1,10 +1,17 @@
 package online.incc.model;
 
+import java.io.Serializable;
+
 import javax.persistence.*;
 
 @Table(name = "inspection_info")
-public class InspectionInfo {
-    @Id
+public class InspectionInfo implements Serializable{
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 2183774258064429987L;
+
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
