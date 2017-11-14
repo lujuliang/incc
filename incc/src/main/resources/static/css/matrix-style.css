@@ -1589,42 +1589,6 @@ form {
 	top:0px;
 	margin: 0;
 	float:right;
+	margin-top:5px;
 }
-#user-nav2 > ul {
-	margin: 0;
-	padding: 0;
-	list-style: none; border-right: 1px solid #2e363f;border-left: 1px solid #000;
-}
-#user-nav2 > ul > li {
-	float: right;
-	list-style-type: none;
-	margin: 0;
-	position: relative;
-	padding: 0; border-left: 1px solid #2e363f; border-right: 1px solid #000;
-}
-#user-nav2 > ul > li > a {
-	padding:9px 10px;
-	display: block;
-	font-size: 11px;
-}
-#user-nav2 > ul > li > a:hover, #user-nav > ul > li.open > a {
-	color: #ffffff;  background:#000;
-}
-#user-nav2 > ul > li > a > i, #sidebar li a i {
-	opacity: .5;
-	margin-top: 2px;
-}
-#user-nav2 > ul > li > a:hover > i, #user-nav > ul > li.open > a > i {
-	opacity: 1;
-}
-#user-nav2 > ul > li > a > .label {
-	vertical-align: middle;
-	padding: 1px 4px 1px;
-	margin: -2px 4px 0;
-	display: inline-block;
-}
-#user-nav2 > ul ul > li > a {
-	text-align: left;
-}
-#user-nav2 > ul ul > li > a:hover {
-}
+
