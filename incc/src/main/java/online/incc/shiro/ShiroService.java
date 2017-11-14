@@ -1,23 +1,19 @@
 package online.incc.shiro;
 
-import com.github.pagehelper.util.StringUtil;
-import online.incc.model.SysResources;
-import online.incc.model.SysUser;
-import online.incc.service.ResourcesService;
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.mgt.RealmSecurityManager;
-import org.apache.shiro.session.Session;
-import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
-import org.apache.shiro.subject.SimplePrincipalCollection;
-import org.apache.shiro.subject.support.DefaultSubjectContext;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.apache.shiro.web.filter.mgt.DefaultFilterChainManager;
 import org.apache.shiro.web.filter.mgt.PathMatchingFilterChainResolver;
 import org.apache.shiro.web.servlet.AbstractShiroFilter;
-import org.crazycake.shiro.RedisSessionDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import com.github.pagehelper.util.StringUtil;
+
+import online.incc.model.SysResources;
+import online.incc.service.ResourcesService;
 
 /**
  * 
@@ -27,7 +23,7 @@ import java.util.*;
 @Service
 public class ShiroService {
     @Autowired
-    private ShiroFilterFactoryBean shiroFilterFactoryBean;
+    private MyShiroFilterFactoryBean shiroFilterFactoryBean;
     @Autowired
     private ResourcesService resourcesService;
     @Autowired

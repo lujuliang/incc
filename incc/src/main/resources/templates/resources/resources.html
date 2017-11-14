@@ -12,17 +12,7 @@
 </head>
 <body>
 
-<!--Header-part-->
-<div id="header">
-    <h1><a href="dashboard.html">Matrix Admin</a></h1>
-</div>
-<!--close-Header-part-->
-
-<!--top-Header-menu-->
-<div th:include="common/top :: top"></div>
-<div th:include="common/menu :: menu"></div>
-
-<div id="content">
+<div id="content-res">
     <div id="content-header">
         <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#" class="current">Tables</a> </div>
     </div>
@@ -39,7 +29,7 @@
                         <button type="button" shiro:hasPermission="/resources/add" onclick="$('#resourcesModal').modal();" class="btn btn-info" style="float: right; margin-right: 1px;">新增</button>
                         <button type="button" shiro:hasPermission="/resources/delete" onclick="delById();" class="btn btn-info" style="float: right; margin-right: 1px;">删除</button>
                         </form>
-                    <table class="table table-bordered data-table" id="datatable" >
+                    <table class="table table-bordered data-table" id="datatable_res" >
                         <thead>
                         <tr>
                             <th>
@@ -58,7 +48,6 @@
             </div>
         </div>
     </div>
-</div>
 </div>
 
 <!--弹框-->
@@ -146,7 +135,7 @@
         $(".checkchild").prop("checked", check);
     });
     $(document).ready(function() {
-        table = $('#datatable').DataTable( {
+        table = $('#datatable_res').DataTable( {
             "dom": '<"top"i>rt<"bottom"flp><"clear">',
             "searching" : false,
             "bJQueryUI": true,

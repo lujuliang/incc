@@ -12,17 +12,7 @@
     <title>角色管理</title>
 </head>
 <body>
-
-<!--Header-part-->
-<div id="header">
-    <h1><a href="dashboard.html">Matrix Admin</a></h1>
-</div>
-<!--close-Header-part-->
-
-<!--top-Header-menu-->
-<div th:include="common/top :: top"></div>
-<div th:include="common/menu :: menu"></div>
-<div id="content">
+<div id="content_roles">
     <div id="content-header">
         <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#" class="current">Tables</a> </div>
     </div>
@@ -41,7 +31,7 @@
                         <button type="button" shiro:hasPermission="/roles/saveRoleResources" onclick="allotResources();" class="btn btn-info" style="float: right; margin-right: 1px;">分配权限</button>
                     </form>
                     <div class="widget-content nopadding">
-                        <table class="table table-bordered data-table" id="datatable" >
+                        <table class="table table-bordered data-table" id="datatable_role" >
                             <thead>
                             <tr>
                                 <th>
@@ -59,7 +49,6 @@
     </div>
 </div>
 
-<%--弹框--%>
 <div class="modal fade bs-example-modal-sm"  id="selectResources" tabindex="-1" role="dialog" aria-labelledby="selectRoleLabel">
     <div class="modal-dialog modal-sm" role="document" style="height: 600px; "  >
         <div class="modal-content">
@@ -79,7 +68,7 @@
         </div>
     </div>
 </div>
-<%----/弹框--%>
+
 
 
 <!--添加弹框-->
@@ -128,7 +117,7 @@
     });
     var table;
     $(document).ready(function() {
-        table = $('#datatable').DataTable( {
+        table = $('#datatable_role').DataTable( {
             "dom": '<"top"i>rt<"bottom"flp><"clear">',
             "searching" : false,
             "bJQueryUI": true,

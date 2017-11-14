@@ -1,28 +1,26 @@
 package online.incc.config;
 
-import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
-import com.github.pagehelper.util.StringUtil;
-import online.incc.model.SysResources;
-import online.incc.service.ResourcesService;
-import online.incc.shiro.MyShiroRealm;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
-import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
-import org.crazycake.shiro.RedisCacheManager;
-import org.crazycake.shiro.RedisManager;
-import org.crazycake.shiro.RedisSessionDAO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import com.github.pagehelper.util.StringUtil;
+
+import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
+import online.incc.model.SysResources;
+import online.incc.service.ResourcesService;
+import online.incc.shiro.MyShiroFilterFactoryBean;
+import online.incc.shiro.MyShiroRealm;
 
 /**
  * 
@@ -72,14 +70,14 @@ public class ShiroConfig {
     @Bean
     public ShiroFilterFactoryBean shirFilter(SecurityManager securityManager){
         System.out.println("ShiroConfiguration.shirFilter()");
-        ShiroFilterFactoryBean shiroFilterFactoryBean  = new ShiroFilterFactoryBean();
+        MyShiroFilterFactoryBean shiroFilterFactoryBean  = new MyShiroFilterFactoryBean();
 
         // 必须设置 SecurityManager
         shiroFilterFactoryBean.setSecurityManager(securityManager);
  
         shiroFilterFactoryBean.setLoginUrl("/login");
         // 登录成功后要跳转的链接
-        shiroFilterFactoryBean.setSuccessUrl("/usersPage");
+        shiroFilterFactoryBean.setSuccessUrl("/main");
         //未授权界面;
         shiroFilterFactoryBean.setUnauthorizedUrl("/403");
         //拦截器.

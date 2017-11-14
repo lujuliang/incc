@@ -74,4 +74,9 @@ public class HomeController {
     public String certificate(){
         return "certificate/certificatePage";
     }
+    
+    @RequestMapping("/main")
+    public String main(){
+        return "main";
+    }
 }

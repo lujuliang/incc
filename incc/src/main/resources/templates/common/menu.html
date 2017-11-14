@@ -5,6 +5,7 @@
 </div>
     <script th:src="@{/js/jquery-1.11.2.min.js}"></script>
     <script type="text/javascript">
+    $(document).ready(function() {
     $.ajax({
         cache: true,
         type: "POST",
@@ -13,17 +14,25 @@
         success: function(data) {
             var html="";
             for(var i=0;i<data.length;i++){
-                html+="<li><a href='/incc"+data[i].resurl+"'><i class='icon icon-home'></i> <span>"+data[i].name+"</span></a> </li>"
+                html+="<li><a class='menuli' id='/incc"+data[i].resurl+"'><i class='icon icon-home'></i> <span>"+data[i].name+"</span></a> </li>"
              }
             $("#menu").append(html);
+            $(".menuli").on("click",function(){
+               $("#content").empty();
+               $("#content").load($(this).attr("id"));
+               $(".active").removeClass("active");
+               $(this).parent().addClass("active");
+            });
             $("#menu li a").each(function(){
             $this = $(this);
             if($this[0].href==String(window.location)){
                 $this.attr("href","javascript:;");
                 $this.parent().addClass("active");
-            }
+           	    }
             });
         }
+    });
+         
     });
 </script>
 </div>
