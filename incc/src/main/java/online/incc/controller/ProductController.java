@@ -6,17 +6,15 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.github.pagehelper.PageInfo;
 
 import online.incc.model.Certificate;
-import online.incc.service.CertificateService;
 import online.incc.service.ProductService;
+import online.incc.vo.ProductListVO;
 
 /**
  * 
@@ -24,21 +22,17 @@ import online.incc.service.ProductService;
  *
  */
 @Controller
-public class CertificateController {
-    @Resource
-    private CertificateService certificateService;
-    
+public class ProductController {
     @Resource
     private ProductService productService;
     
-	@RequestMapping("/certificate/certificates")
+	@RequestMapping("/product/products")
 	@ResponseBody
-    public Map<String,Object> getAll(Certificate certificate, String draw,
+    public Map<String,Object> getAll(ProductListVO productList, String draw,
                                      @RequestParam(required = false, defaultValue = "1") int start,
                                      @RequestParam(required = false, defaultValue = "10") int length){
         Map<String,Object> map = new HashMap<>();
-        PageInfo<Certificate> pageInfo = certificateService.selectByPage(certificate, start, length);
-        System.out.println("pageInfo.getTotal():"+pageInfo.getTotal());
+        PageInfo<ProductListVO> pageInfo = productService.selectProducts(productList, start, length);
         map.put("draw",draw);
         map.put("recordsTotal",pageInfo.getTotal());
         map.put("recordsFiltered",pageInfo.getTotal());
@@ -46,12 +40,5 @@ public class CertificateController {
         return map;
     }
 	
-    @RequestMapping("/certificate/{proId}")
-    public ModelAndView certificateInfo(@PathVariable Integer proId){
-    	ModelAndView mv = new ModelAndView();
-    	mv.setViewName("certificate/certificate");
-        mv.addObject("certificate", certificateService.selectByKey(proId));
-    	return mv;
-    }
 	
 }

@@ -9,7 +9,7 @@
     <link rel="stylesheet" th:href="@{/css/matrix-media.css}" />
     <link th:href="@{/font-awesome/css/font-awesome.css}" rel="stylesheet" />
     <link rel="shortcut icon" th:href="@{/images/favicon.ico}" type="image/x-icon" />
-    <title>资质管理</title>
+    <title>商品管理</title>
 </head>
 <body>
 
@@ -24,7 +24,7 @@
 
                 <div class="widget-box">
                     <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
-                        <h5>证书列表</h5>
+                        <h5>商品列表</h5>
                     </div>
                     <form class="form-inline">
                         <div class="form-group">
@@ -35,14 +35,16 @@
                    </form>
 
                     <div class="widget-content nopadding">
-                        <table class="table table-striped table-bordered" cellspacing="0" width="100%" id="datatable_cert" >
+                        <table class="table table-striped table-bordered" cellspacing="0" width="100%" id="datatable_product" >
                             <thead>
                             <tr>
                                 <th>商品名称</th>
                                 <th>出品机构</th>
                                 <th>品牌名称</th>
                                 <th>有效期至</th>
-                                <th>查看证书</th>                               
+                                <th>认证状态</th> 
+                                <th>查看证书</th>   
+                                <th>详情二维码</th>                             
                             </tr>
                             </thead>
                         </table>
@@ -64,7 +66,7 @@
     });
     var table;
     $(document).ready(function() {
-        table = $('#datatable_cert').DataTable( {
+        table = $('#datatable_product').DataTable( {
         	language: {
                 "sProcessing": "处理中...",
                 "sLengthMenu": "显示 _MENU_ 项结果",
@@ -101,7 +103,7 @@
 
                 $.ajax({
                     type: "GET",
-                    url: 'certificate/certificates',
+                    url: 'product/products',
                     cache : false,  //禁用缓存
                     data: param,    //传入已封装的参数
                     dataType: "json",
@@ -123,11 +125,30 @@
                 { "data": "produceName" },
                 { "data": "brandName" },
                 { "data": "endDt" },
+                { "data": "status" },
                 {
                     "sClass": "text-center",
-                    "data": "proId",
+                    "data": "certId",
                     "render": function (data, type, full, meta) {
-                        return '<a class=\'btn btn-success\' href=/incc/certificate/'+ data+ '  target=\'_blank\'>查看证书</a>';
+                    	if(data != null){
+                    		 return '<a class=\'btn btn-success\' href=/incc/certificate/'+ data+ '  target=\'_blank\'>查看证书</a>';
+                    	}else{
+                    		return "--";
+                    	}
+                       
+                    },
+                    "bSortable": false
+                },
+                {
+                    "sClass": "text-center",
+                    "data": "ewmPath",
+                    "render": function (data, type, full, meta) {
+                    	if(data != null){
+                    		return '<a href='+ data+ ' target=\'_blank\'>查看</a>';
+                    	}else{
+                    		return "--"
+                    	}
+                        
                     },
                     "bSortable": false
                 },
@@ -156,139 +177,9 @@
         param.draw = data.draw;
         return param;
     }
-    //弹出选择角色的框
-    function allotRole(){
-        var id = $(".checkchild:checked").val();
-        if ($(".checkchild:checked").length < 1)
-        {
-            layer.msg('请选择一条数据');
-            return;
-        }
-        if ($(".checkchild:checked").length > 1)
-        {
-            layer.msg('一次只能修改一条数据');
-            return;
-        }
-        $.ajax({
-            async:false,
-            type : "POST",
-            data:{uid:id},
-            url: 'roles/rolesWithSelected',
-            dataType:'json',
-            success: function(data){
-                $("#boxRoleForm").empty();
-                var htm = "<input type='hidden' name='userid' value='"+id+"'>";
-                for(var i=0;i<data.length;i++){
-                    htm += "<div class='checkbox'><label><input type='checkbox' name='roleid' value='"+data[i].id+"'";
-                    if(data[i].selected==1){
-                        htm += " checked='checked'";
-                    }
-                    htm +="/>"+data[i].roledesc+"</label></div>";
-                }
-                $("#boxRoleForm").append(htm);
-            }
-        });
-
-        $('#selectRole').modal();
-    }
-
-    //保存角色的选择
-    function saveUserRoles() {
-        $.ajax({
-            cache: true,
-            type: "POST",
-            url:'users/saveUserRoles',
-            data:$('#boxRoleForm').serialize(),// 你的formid
-            async: false,
-            success: function(data) {
-                if(data=="success"){
-                    layer.msg('保存成功');
-                    $('#selectRole').modal('hide');
-                }else{
-                    layer.msg('保存失败');
-                    $('#selectRole').modal('hide');
-                }
-            }
-        })
-    }
-
-
-    //添加用户
-    function addUser() {
-        var username = $("#username").val();
-        var password = $("#password").val();
-        if(username == "" || username == undefined || username == null){
-            return layer.msg('用户名不能为空', function(){
-                //关闭后的操作
-            });
-        }
-        if(password.length<6||password.length>=16){
-            return layer.msg('密码长度为6-16', function(){
-                //关闭后的操作
-            });
-        }
-
-        var form = $('#userForm')[0];
-        var data = new FormData(form);
-        $.ajax({
-            cache: false,
-            enctype: "multipart/form-data",
-            type: "POST",
-            url:'users/add',
-            data:data,// 你的formid
-            processData: false,
-            contentType: false,
-            success: function(data) {
-                if(data=="success"){
-                    layer.msg('保存成功');
-                    table.ajax.reload();
-                    $('#addUser').modal('hide');
-                }else if(data="error"){
-                    layer.msg('该用户已存在');
-                    $('#addUser').modal('hide');
-                }else{
-                    layer.msg('保存失败');
-                    $('#addUser').modal('hide');
-                }
-            }
-        });
-    }
 
     function add() {
     	window.location.href = "/users/addUserPage"
-    }
-    
-    function delByID() {
-        var id = $(".checkchild:checked").val();
-        if ($(".checkchild:checked").length < 1)
-        {
-            layer.msg('请选择一条数据');
-            return;
-        }
-        if ($(".checkchild:checked").length > 1)
-        {
-            layer.msg('一次只能修改一条数据');
-            return;
-        }
-        layer.confirm('您确定要删除该用户吗？', {
-            btn: ['确认','取消'] //按钮
-        }, function(){
-            $.ajax({
-                cache: true,
-                type: "POST",
-                url:'users/delete',
-                data:{id:id},
-                async: false,
-                success: function(data) {
-                    if(data=="success"){
-                        layer.msg('删除成功');
-                        table.ajax.reload();
-                    }else{
-                        layer.msg('删除失败');
-                    }
-                }
-            });
-        });
     }
 
 </script>
