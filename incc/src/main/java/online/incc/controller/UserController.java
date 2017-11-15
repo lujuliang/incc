@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -72,7 +73,7 @@ public class UserController {
         }
     }
 
-    @RequestMapping(value = "/add")
+    @PostMapping(value = "/add")
     public String add(@ModelAttribute UserVo userVo, HttpServletRequest request) {
     	SysUser sysUser = userVo.getUser();
         SysUser u = userService.selectByUsername(sysUser.getUsername());
@@ -82,7 +83,7 @@ public class UserController {
             sysUser.setEnable(1);
             PasswordHelper passwordHelper = new PasswordHelper();
             passwordHelper.encryptPassword(sysUser);
-            userService.save(sysUser);
+            userService.saveUserAndRole(sysUser);
             return "success";
         } catch (Exception e) {
             e.printStackTrace();

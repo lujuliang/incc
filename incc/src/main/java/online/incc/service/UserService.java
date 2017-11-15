@@ -16,4 +16,10 @@ public interface UserService extends IService<SysUser>{
 
     void delUser(Integer userid);
 
+    /**
+     * user type =0 set 会员role to this user，else save user only
+     * @param sysUser
+     */
+	void saveUserAndRole(SysUser sysUser);
+
 }

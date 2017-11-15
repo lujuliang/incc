@@ -101,6 +101,8 @@ public class ShiroConfig {
             }
         }
         filterChainDefinitionMap.put("/ewm/**", "anon");
+        filterChainDefinitionMap.put("/", "anon");
+        filterChainDefinitionMap.put("/users/add", "anon");
         filterChainDefinitionMap.put("/**", "authc");
 
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);

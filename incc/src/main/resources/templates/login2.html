@@ -191,14 +191,7 @@
 													
 													<label class="block clearfix" style="display:none;">
 														<span class="block input-icon input-icon-right">
-                                                           <input type="hidden" class="form-control" id="type" name="user.type"  value="1"/>
-														</span>
-													</label>
-													
-													<label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-															<input type="text" class="form-control" placeholder="手机号" id="telnum" name="user.telnum" required/>
-															<i class="ace-icon fa fa-phone"></i>
+                                                           <input type="hidden" class="form-control" id="type" name="user.type"  value="0"/>
 														</span>
 													</label>
 													
@@ -208,6 +201,22 @@
 															<i class="ace-icon fa fa-envelope"></i>
 														</span>
 													</label>
+													
+																										
+													<label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="text" class="form-control" placeholder="手机号" id="telnum" name="user.telnum" required/>
+															<i class="ace-icon fa fa-phone"></i>
+														</span>
+													</label>
+													
+													<div class="clearfix">
+														<input type="text" id="validateCode" class="width-65 form-contro" placeholder="验证码" />
+														<button type="button" id="createCode" class="width-30 form-control pull-right btn btn-sm btn-success" >
+															<span class="bigger-110">获取验证码</span>
+															<i class="ace-icon fa fa-arrow-right icon-on-right"></i>
+														</button>
+													</div>
 
 													<label class="block">
 														<input type="checkbox" class="ace" />
@@ -225,7 +234,7 @@
 															<span class="bigger-110">重置</span>
 														</button>
 
-														<button type="button" id="createBtn" class="width-65 pull-right btn btn-sm btn-success" onclick="addUser();" >
+														<button type="button" id="createBtn" class="width-65 pull-right btn btn-sm btn-success" >
 															<span class="bigger-110">注册</span>
 
 															<i class="ace-icon fa fa-arrow-right icon-on-right"></i>
@@ -296,11 +305,26 @@
 				e.preventDefault();
 			 });
 			 
+			 var createCode = "";
+			 
+			 $("#createCode").on("click", function(e){
+				 createCode = "";
+				 for(var i=0;i<6;i++) 
+				 { 
+					 createCode+=Math.floor(Math.random()*10); 
+				 } 
+				 $("#validateCode").val(createCode);
+			     
+			 });
+			 
+			 $("#createBtn").on("click", function(e){addUser();});
+			 
 			//添加用户
 			    function addUser() {
 			        var username = $("#username").val();
 			        var password1 = $("#password1").val();
 			        var password2 = $("#password2").val();
+			        var validateCode = $("#validateCode").val();
 			        if(username == "" || username == undefined || username == null){
 			            return layer.msg('用户名不能为空', function(){
 			                //关闭后的操作
@@ -323,6 +347,18 @@
 				                //关闭后的操作
 				            });
 			        }
+			        
+			        if(validateCode == null) {
+			        	return layer.msg('请填写验证码', function(){
+			                //关闭后的操作
+			            });
+			        }
+			        
+			        if(createCode != validateCode){
+			        	return layer.msg('验证码输入有误', function(){
+			                //关闭后的操作
+			            });
+			        }
 			        var form = $('#createUserForm')[0];
 			        var data = new FormData(form);
 			        $.ajax({
@@ -336,14 +372,14 @@
 			            success: function(data) {
 			                if(data=="success"){
 			                    layer.msg('保存成功');
-			                    table.ajax.reload();
-			                    $('#addUser').modal('hide');
+			                   $("#signup-box").removeClass("visible");
+			                   $("#login-box").addClass(" visible");
 			                }else if(data="error"){
 			                    layer.msg('该用户已存在');
-			                    $('#addUser').modal('hide');
+			                   
 			                }else{
 			                    layer.msg('保存失败');
-			                    $('#addUser').modal('hide');
+			                   
 			                }
 			            }
 			        });

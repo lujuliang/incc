@@ -30,7 +30,7 @@
 
 <!--Footer-part-->
 <div class="row-fluid">
-    <div id="footer" class="span12"> 2017 &copy; yqj <a href="http://themedesigner.in/">Themedesigner.in</a> </div>
+    <div id="footer" class="span12"> 2017 &copy; INCC  </div>
 </div>
 <!--end-Footer-part-->
 <script type="text/javascript" th:src="@{/js/jquery-1.11.2.min.js}"></script>
@@ -40,9 +40,9 @@
 <script type="text/javascript">
 
     $(document).ready(function() {
-    
-    	
-
+    	if(window.location.href != "http://localhost:8081/incc/main"){
+    		window.location.href  = "http://localhost:8081/incc/main";
+    	}
     });
 
 </script>
