@@ -23,6 +23,11 @@
                $(".active").removeClass("active");
                $(this).parent().addClass("active");
             });
+            if(data.length>0){
+            	$("#content").load("/incc"+data[0].resurl);
+            	$($(".menuli")[0]).parent().addClass("active");
+            }
+            
             $("#menu li a").each(function(){
             $this = $(this);
             if($this[0].href==String(window.location)){

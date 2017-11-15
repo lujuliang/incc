@@ -19,6 +19,7 @@
 			<link rel="stylesheet" th:href="@{/css/ace-part2.min.css}" />
 		<![endif]-->
 		<link rel="stylesheet" th:href="@{/css/ace-rtl.min.css}" />
+		
 
 		<!--[if lte IE 9]>
 		  <link rel="stylesheet" th:href="@{/css/ace-ie.min.css}" />
@@ -165,33 +166,46 @@
 											<div class="space-6"></div>
 											<p>填写信息: </p>
 
-											<form>
+											<form id="createUserForm" >
 												<fieldset>
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="email" class="form-control" placeholder="邮箱" />
-															<i class="ace-icon fa fa-envelope"></i>
-														</span>
-													</label>
-
-													<label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-															<input type="text" class="form-control" placeholder="用户名" />
+															<input type="text" class="form-control" name="user.username" id="username" placeholder="用户名" required/>
 															<i class="ace-icon fa fa-user"></i>
 														</span>
 													</label>
 
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="password" class="form-control" placeholder="密码" />
-															<i class="ace-icon fa fa-lock"></i>
+															<input type="password" class="form-control" placeholder="密码" id="password1" required/>
+															<i class="ace-icon fa fa-pencil"></i>
 														</span>
 													</label>
 
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="password" class="form-control" placeholder="确认密码" />
+															<input type="password" class="form-control" placeholder="确认密码" id="password2" name="user.password" required/>
 															<i class="ace-icon fa fa-retweet"></i>
+														</span>
+													</label>
+													
+													<label class="block clearfix" style="display:none;">
+														<span class="block input-icon input-icon-right">
+                                                           <input type="hidden" class="form-control" id="type" name="user.type"  value="1"/>
+														</span>
+													</label>
+													
+													<label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="text" class="form-control" placeholder="手机号" id="telnum" name="user.telnum" required/>
+															<i class="ace-icon fa fa-phone"></i>
+														</span>
+													</label>
+													
+													<label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="email" class="form-control" placeholder="邮箱地址" id="email" name="user.email" required/>
+															<i class="ace-icon fa fa-envelope"></i>
 														</span>
 													</label>
 
@@ -211,7 +225,7 @@
 															<span class="bigger-110">重置</span>
 														</button>
 
-														<button type="button" class="width-65 pull-right btn btn-sm btn-success">
+														<button type="button" id="createBtn" class="width-65 pull-right btn btn-sm btn-success" onclick="addUser();" >
 															<span class="bigger-110">注册</span>
 
 															<i class="ace-icon fa fa-arrow-right icon-on-right"></i>
@@ -241,6 +255,7 @@
 
 		<!--[if !IE]> -->
 		<script th:src="@{/js/jquery.2.1.1.min.js}"></script>
+		<script th:src="@{/js/layer.js}"></script>
 
 		<!-- <![endif]-->
 
@@ -280,6 +295,59 @@
 				
 				e.preventDefault();
 			 });
+			 
+			//添加用户
+			    function addUser() {
+			        var username = $("#username").val();
+			        var password1 = $("#password1").val();
+			        var password2 = $("#password2").val();
+			        if(username == "" || username == undefined || username == null){
+			            return layer.msg('用户名不能为空', function(){
+			                //关闭后的操作
+			            });
+			        }
+			        if(password1.length<6||password1.length>=16){
+			            return layer.msg('密码长度为6-16', function(){
+			                //关闭后的操作
+			            });
+			        }
+			        
+			        if(password2.length<6||password2.length>=16){
+			            return layer.msg('密码长度为6-16', function(){
+			                //关闭后的操作
+			            });
+			        }
+
+			        if(password1 != password2){
+			            return layer.msg('两次输入密码不同', function(){
+				                //关闭后的操作
+				            });
+			        }
+			        var form = $('#createUserForm')[0];
+			        var data = new FormData(form);
+			        $.ajax({
+			            cache: false,
+			            enctype: "multipart/form-data",
+			            type: "POST",
+			            url:'users/add',
+			            data:data,// 你的formid
+			            processData: false,
+			            contentType: false,
+			            success: function(data) {
+			                if(data=="success"){
+			                    layer.msg('保存成功');
+			                    table.ajax.reload();
+			                    $('#addUser').modal('hide');
+			                }else if(data="error"){
+			                    layer.msg('该用户已存在');
+			                    $('#addUser').modal('hide');
+			                }else{
+			                    layer.msg('保存失败');
+			                    $('#addUser').modal('hide');
+			                }
+			            }
+			        });
+			    }
 			 
 			});
 		</script>

@@ -21,6 +21,12 @@ public class SysUser implements Serializable{
      * 是否启用
      */
     private Integer enable;
+    
+    private Integer type;
+    
+    private String email;
+    
+    private String telnum;
 
     /**
      * @return id
@@ -82,7 +88,31 @@ public class SysUser implements Serializable{
         this.enable = enable;
     }
 
-    @Override
+    public Integer getType() {
+		return type;
+	}
+
+	public void setType(Integer type) {
+		this.type = type;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getTelnum() {
+		return telnum;
+	}
+
+	public void setTelnum(String telnum) {
+		this.telnum = telnum;
+	}
+
+	@Override
     public String toString() {
         return "SysUser{" +
                 "id=" + id +
