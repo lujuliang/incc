@@ -11,9 +11,8 @@ public class Product implements Serializable{
 	private static final long serialVersionUID = -5036645319006624421L;
 
 	@Id
-    @Column(name = "pro_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer proId;
+    private Integer id;
 
     @Column(name = "pro_name")
     private String proName;
@@ -48,15 +47,15 @@ public class Product implements Serializable{
     @Column(name = "inspection_report_path")
     private String inspectionReportPath;
 
-    public Integer getProId() {
-        return proId;
+    public Integer getId() {
+        return id;
     }
 
     /**
-     * @param proId
+     * @param id
      */
-    public void setProId(Integer proId) {
-        this.proId = proId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     /**

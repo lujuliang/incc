@@ -1592,3 +1592,10 @@ form {
 	margin-top:5px;
 }
 
+.table>tr>td{
+  vertical-align:center;
+}
+
+#addPro{
+  padding: 20px;
+}

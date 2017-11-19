@@ -1,0 +1,9 @@
+input[type="text"]{
+	height: 80%;
+	width: 80%;
+}
+
+select{
+	height: 80%;
+	width: 80%;
+}

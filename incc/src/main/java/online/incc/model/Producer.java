@@ -1,4 +1,4 @@
-package online.incc.model;
+ package online.incc.model;
 
 import java.io.Serializable;
 

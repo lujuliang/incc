@@ -35,7 +35,7 @@ public class InspectionInfoServiceImpl extends BaseService<InspectionInfo> imple
 	@Override
 	@Cacheable(cacheNames="inspectionInfoVO",key="#proId")
 	public List<InspectionInfo> selectByProId(Integer proId) {
-		Example example = new Example(Product.class);
+		Example example = new Example(InspectionInfo.class);
 		Example.Criteria criteria = example.createCriteria();
 		criteria.andEqualTo("proId", proId);
 		return selectByExample(example);

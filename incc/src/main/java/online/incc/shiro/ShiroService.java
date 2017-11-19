@@ -41,7 +41,7 @@ public class ShiroService {
         filterChainDefinitionMap.put("/font-awesome/**","anon");
         List<SysResources> resourcesList = resourcesService.queryAll();
         for(SysResources resources:resourcesList){
-            if (StringUtil.isNotEmpty(resources.getResurl())&& !resources.getResurl().contains("ewmInfo")) {
+            if (StringUtil.isNotEmpty(resources.getResurl())&& !resources.getResurl().contains("ewm")) {
                 String permission = "perms[" + resources.getResurl()+ "]";
                 filterChainDefinitionMap.put(resources.getResurl(),permission);
             }

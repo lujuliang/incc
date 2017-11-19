@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.5, minimum-scale=0.3, maximum-scale=2.0, user-scalable=yes">
+    <meta content="no" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <link rel="stylesheet" th:href="@{/css/ewm.css}" />
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+	<script type="text/javascript" th:src="@{/js/jquery-1.11.2.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+	<script th:src="@{/js/layer.js}"></script>
+    <title>INCC</title>
+    <style type="text/css">
+        <!--
+        body {
+            margin-left: 0px;
+            margin-top: 0px;
+            margin-right: 0px;
+            margin-bottom: 0px;
+        }
+        -->
+    </style>
+
+</head>
+<body>
+<div id="pagewrap">
+    <div id="top">
+        <img th:src="@{/images/logo.png}" class="logo">
+    </div>
+    <div class="clear"></div>
+    <h1 align="center" style="color:red;">审批预览</h1>
+    <div id="header">
+        <h2 align="center">中国保护消费者基金会</h2>
+        <h1 align="center"><span class="incc_big">INCC</span> 商品资质合规识别信息 </h1>
+        <p>　　经过INCC验证，该商品资质齐备，商品资质符合国家监管部门对此类型
+            商品上市流通的法规要求和规范。<br>
+            　　特授予此商品 <b>资质合规识别INCC标识</b> 。 </p>
+    </div>
+    <div class="clear"></div>
+    <div id="info">
+        <p><strong>商品信息总览：</strong><br>
+            商品名称： <b th:text="${product.proName}" ></b><br>
+            商品类型： <b th:text="${product.type}"></b>	    <br>
+            出品机构： <b th:text="${product.produceName}"></b>	    <br>
+            品牌名称： <b th:text="${product.brandName}"></b><br>
+            标识效期： <b th:text="${product.startDt}"></b> </p>
+           <input type="hidden" id="proId" th:value="${product.proId}">
+           <input type="hidden" id="proName" th:value="${product.proName}">
+           <input type="hidden" id="produceName" th:value="${product.produceName}">
+           <input type="hidden" id="brandName" th:value="${product.brandName}">
+           <input type="hidden" id="startDt" th:value="${product.startDt}">
+    </div>
+    <div class="clear"></div>
+    <div id="info">
+        <p><strong>商品图片：</strong><br>
+        </p>
+           <div id="commodityPic" class="pro_img">
+             <img th:src="${product.picPath}" id="proImg">
+           </div>
+        <p></p>
+    </div>
+
+    <div class="clear"></div>
+    <div id="info">
+        <p><strong>行政审批许可信息</strong></p>
+        <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#CCCCCC" class="box01">
+            <tbody><tr>
+                <td width="32%" height="38" class="td_gray01">审批项目</td>
+                <td width="55%" height="38" class="td_gray01" th:text="${approvalInfo.name}"></td>
+                <td width="13%" height="38" class="td_gray01">-</td>
+            </tr>
+            <tr>
+                <td height="38" class="td_gray01">凭证号码</td>
+                <td height="38" class="td_gray01" th:text="${approvalInfo.auditNum}"></td>
+                <td height="38" class="td_gray01">-</td>
+            </tr>
+            <tr>
+                <td height="38" class="td_gray01">有效时间</td>
+                <td height="38" class="td_gray01" th:text="${approvalInfo.dtTerm}"></td>
+                <td height="38" class="td_gray01">-</td>
+            </tr>
+            <tr>
+                <td height="38" class="td_gray01">审批机构</td>
+                <td height="38" class="td_gray01" th:text="${approvalInfo.approvOrg}"></td>
+                <td height="38" class="td_gray01">-</td>
+            </tr>
+        </tbody></table>
+        <p></p>
+    </div>
+
+    <div id="info">
+        <p><strong>商品检测信息</strong></p>
+
+        <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#CCCCCC" class="box01">
+            <tbody>
+	            <tr th:each="inspection,inspectionStat:${inspections}">
+	                <td width="32%" height="38" class="td_gray01" th:text="${inspection.content}"></td>
+	                <td width="55%" height="38" class="td_gray01" th:text="${inspection.inspOrg}"></td>
+	                <td width="13%" height="38" class="td_gray01" th:text="${inspection.result}"></td>
+	            </tr>
+           </tbody>
+        </table>
+
+	    <div id="info">
+	        <p><strong>检测报告：</strong><br>
+	        </p>
+	           <div id="commodityPic" class="pro_img">
+	             <img th:src="${product.insPath}" id="insImg">
+	           </div>
+	        <p></p>
+	    </div>
+        <p></p>
+    </div>
+    <div id="info">
+        <p><strong>经营主体</strong></p>
+        <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#CCCCCC" class="box01">
+            <tbody><tr>
+                <td width="32%" height="38" class="td_gray01">经营主体名称</td>
+                <td width="55%" height="38" class="td_gray01" th:text="${management.name}"></td>
+                <td width="13%" height="38" class="td_gray01">--</td>
+            </tr>
+            <tr>
+                <td height="38" class="td_gray01">社会统一信用代码</td>
+                <td height="38" class="td_gray01" th:text="${management.creditCode}"></td>
+                <td height="38" class="td_gray01">--</td>
+            </tr>
+            <tr>
+                <td height="38" class="td_gray01">营业期限</td>
+                <td height="38" class="td_gray01" th:text="${management.startDt}"></td>
+                <td height="38" class="td_gray01">--</td>
+            </tr>
+            <tr>
+                <td height="38" class="td_gray01">保健食品生产销售行政许可</td>
+                <td height="38" class="td_gray01"  th:text="${management.permit}"></td>
+                <td height="38" class="td_gray01">--</td>
+            </tr>
+        </tbody></table>
+
+        <p></p>
+    </div>
+    <div id="info">
+        <p><strong>品牌信息</strong></p>
+
+        <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#CCCCCC" class="box01">
+            <tbody><tr>
+                <td height="38" class="td_gray01">品牌名称</td>
+                <td height="38" class="td_gray01" th:text="${brand.name}"></td>
+                <td height="38" class="td_gray01">有效</td>
+            </tr>
+            <tr>
+                <td height="38" class="td_gray01">品牌状态</td>
+                <td height="38" class="td_gray01" th:text="${brand.status}"></td>
+                <td height="38" class="td_gray01">有效</td>
+            </tr>
+            <tr>
+                <td height="38" class="td_gray01">品牌注册证号</td>
+                <td height="38" class="td_gray01" th:text="${brand.num}"></td>
+                <td height="38" class="td_gray01">有效</td>
+            </tr>
+            <tr>
+                <td width="32%" height="38" class="td_gray01">品牌权利人</td>
+                <td width="55%" height="38" class="td_gray01" th:text="${brand.author}"></td>
+                <td width="13%" height="38" class="td_gray01">有效</td>
+            </tr>
+        </tbody></table>
+
+        <p></p>
+    </div>
+    <div id="info">
+        <p><strong>生产主体</strong></p>
+
+        <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#CCCCCC" class="box01">
+            <tbody><tr>
+                <td width="32%" height="38" class="td_gray01">生产主体名称</td>
+                <td width="55%" height="38" class="td_gray01" th:text="${producer.name}"></td>
+                <td width="13%" height="38" class="td_gray01">--</td>
+            </tr>
+            <tr>
+                <td height="38" class="td_gray01">社会统一信用代码</td>
+                <td height="38" class="td_gray01" th:text="${producer.creditCode}"></td>
+                <td height="38" class="td_gray01">--</td>
+            </tr>
+            <tr>
+                <td height="38" class="td_gray01">营业期限</td>
+                <td height="38" class="td_gray01" th:text="${producer.startDt}"></td>
+                <td height="38" class="td_gray01">--</td>
+            </tr>
+            <tr>
+                <td height="38" class="td_gray01">保健食品生产销售行政许可</td>
+                <td height="38" class="td_gray01" th:text="${producer.permit}"></td>
+                <td height="38" class="td_gray01">--</td>
+            </tr>
+        </tbody></table>
+
+        <p></p>
+    </div>
+ 
+    <div id="info">
+        <p>注： <br>
+            </p><ul>
+                <li> 本页所列商品资质信息不可用于非法目的。</li>
+                <li> INCC不对本页所列商品的品质、上市流通资格以及商品经营、生产主体的资格担保或承诺，也不对因上述识别信息而生产的交易纠纷、调处结果及赔付承担任何责任。</li>
+                <li> INCC仅对本页所列商品的符合国家行政监督管理部门强制要求的检测、认可、许可、备案信息和凭证进行查询、收集、核实与展示。</li>
+                <li>INCC对本活动拥有最终解释权。 </li>
+        <p align="right"><strong>中国保护消费者基金会 <br>
+            安全消费中国行 INCC项目组 <br>
+            <span th:text="${awardDt}"></span></strong></p></ul>
+
+        <p></p>
+    </div>
+    <div id="info">
+        <div id="left" style="font-size:1.2rem"><br>
+
+            点击 <span class="incc_red">关注INCC</span> 或扫描右侧二维码关注INCC微信公众号
+            获得更多合规商品讯息和合规商品免费试用机会。</div>
+        <div id="right">
+            <div align="right"><img th:src="@{/images/certificate/ewm.png}" width="165" height="163" align="absmiddle"></div>
+        </div>
+        <p></p>
+    </div>
+    <div id="info">&nbsp;</div>
+</div>
+    <div id="query_hint" class="query_hint" style="display:none">
+       <img th:src="@{/images/spinner.gif}" style="width:30px;height:30px;margin-left:40%;">正在提交，请稍等.
+    </div>
+ <input type="button" value="确认审批" class="btn btn-success" id="sureBtn" style="margin-bottom:20px; margin-left:40%;">
+</body>
+<script type="text/javascript">
+  $(document).ready(function() {
+      $("#sureBtn").on("click",function(){
+    	  $("#query_hint").css('display','block');
+    	  $("#sureBtn").attr("disabled",true); 
+    	  var data={
+    			  "proId":$("#proId").val(),
+    			  "proName":$("#proName").val(),
+    			  "produceName":$("#produceName").val(),
+    			  "brandName":$("#brandName").val(),
+    			  "startDt":$("#startDt").val().split("至")[0],
+    			  "endDt":$("#startDt").val().split("至")[1],
+    			  "awardOrg":"中国保护消费者基金会"
+    			  };
+    	  $.ajax({
+  			cache : false,
+  			type : "POST",
+  			url : '/incc/approval/makesure',
+  			data:JSON.stringify(data), 
+  			dataType:"text",        
+            contentType:"application/json",                 
+  			success : function(data) {
+  				if (data == "success") {
+  					layer.msg('保存成功');
+  					window.history.back(-1);
+  				} else if (data = "error") {
+  					layer.msg('申请失败，请联系管理员.');
+  				} else {
+
+  				}
+  			}
+  		});
+      })
+  });
+</script>
+</html>

@@ -91,4 +91,17 @@ public class HomeController {
 
     	return "noroles";
     }
+    
+    @RequestMapping("/productPage")
+    public String productPage(){
+        return "product/products";
+    }
+    @RequestMapping("/product/addPage")
+    public String addProduct(){
+        return "product/addPro";
+    }
+    @RequestMapping("/approvalPage")
+    public String approvalPage(){
+        return "approval/approval";
+    }
 }

@@ -25,6 +25,8 @@
 package online.incc.service.impl;
 
 import online.incc.service.IService;
+
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import tk.mybatis.mapper.common.Mapper;
 
@@ -64,5 +66,7 @@ public abstract class BaseService<T> implements IService<T> {
         return mapper.selectByExample(example);
     }
 
-    //TODO 其他...
+    public Integer userId() {
+    	return (Integer) SecurityUtils.getSubject().getSession().getAttribute("userSessionId"); 
+    }
 }

@@ -36,10 +36,11 @@ public class ApprovalInfoServiceImpl extends BaseService<ApprovalInfo> implement
 	@Override
 	@Cacheable(cacheNames="approvalInfoVO",key="#proId")
 	public ApprovalInfo selectByProId(Integer proId) {
-		Example example = new Example(Product.class);
+		Example example = new Example(ApprovalInfo.class);
 		Example.Criteria criteria = example.createCriteria();
 		criteria.andEqualTo("proId", proId);
-		List<ApprovalInfo> list = selectByExample(example);
+		List<ApprovalInfo> list = approvalInfoMapper.selectByExample(example);
+		
 		if(list.size()>0) {
 		   return list.get(0);
 		}else {

@@ -3,6 +3,7 @@ package online.incc.service;
 import com.github.pagehelper.PageInfo;
 
 import online.incc.model.Product;
+import online.incc.vo.ProductAddVO;
 import online.incc.vo.ProductListVO;
 import online.incc.vo.ProductVO;
 
@@ -18,4 +19,6 @@ public interface ProductService extends IService<Product> {
 	ProductVO selectProductInfoByKey(Integer key);
 	
 	PageInfo<ProductListVO> selectProducts(ProductListVO productList, int start, int length);
+	
+	String add(ProductAddVO vo,String realPath);
 }

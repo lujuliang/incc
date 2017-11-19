@@ -6,14 +6,17 @@ public class ProductListVO {
 	private String type;
 	private String produceName;
 	private Integer produceId;
-	private Integer manangmentName;
+	private String manangmentName;
 	private Integer manangmentId;
 	private Integer brandId;
 	private String brandName;
 	private String status;
 	private String startDt;
 	private String endDt;
+	private String ewmPath;
+	private Integer certId;
 	
+	private String createDt;
 	public Integer getProId() {
 		return proId;
 	}
@@ -44,10 +47,10 @@ public class ProductListVO {
 	public void setProduceId(Integer produceId) {
 		this.produceId = produceId;
 	}
-	public Integer getManangmentName() {
+	public String getManangmentName() {
 		return manangmentName;
 	}
-	public void setManangmentName(Integer manangmentName) {
+	public void setManangmentName(String manangmentName) {
 		this.manangmentName = manangmentName;
 	}
 	public Integer getManangmentId() {
@@ -91,6 +94,24 @@ public class ProductListVO {
 	}
 	public void setErmPath(String ermPath) {
 		this.ermPath = ermPath;
+	}
+	public String getEwmPath() {
+		return ewmPath;
+	}
+	public void setEwmPath(String ewmPath) {
+		this.ewmPath = ewmPath;
+	}
+	public Integer getCertId() {
+		return certId;
+	}
+	public void setCertId(Integer certId) {
+		this.certId = certId;
+	}
+	public String getCreateDt() {
+		return createDt;
+	}
+	public void setCreateDt(String createDt) {
+		this.createDt = createDt;
 	}
 	private String ermPath;
 

@@ -5,7 +5,7 @@
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="pro_id" jdbcType="INTEGER" property="proId" />
+    <id column="id" jdbcType="INTEGER" property="id" />
     <result column="pro_name" jdbcType="VARCHAR" property="proName" />
     <result column="type" jdbcType="VARCHAR" property="type" />
     <result column="management_id" jdbcType="INTEGER" property="managementId" />
@@ -21,6 +21,7 @@
   </resultMap>
   
   <resultMap id="ProductInfoMap" type="online.incc.vo.ProductVO">
+    <result column="pro_id" jdbcType="VARCHAR" property="proId" />
     <result column="pro_name" jdbcType="VARCHAR" property="proName" />
     <result column="type" jdbcType="VARCHAR" property="type" />
     <result column="brand_name" jdbcType="VARCHAR" property="brandName" />
@@ -36,26 +37,50 @@
   </resultMap>
   
   <resultMap id="ProductListVOMap" type="online.incc.vo.ProductListVO">
+    <result column="id" jdbcType="INTEGER" property="proId" />
     <result column="pro_name" jdbcType="VARCHAR" property="proName" />
     <result column="type" jdbcType="VARCHAR" property="type" />
-    <result column="brand_name" jdbcType="VARCHAR" property="brandName" />
     <result column="produce_name" jdbcType="VARCHAR" property="produceName" />
-    <result column="start_dt" jdbcType="VARCHAR" property="startDt" />
-    <result column="end_dt" jdbcType="VARCHAR" property="endDt" />
-    <result column="pic_path" jdbcType="VARCHAR" property="picPath" />
-    <result column="brand_id" jdbcType="INTEGER" property="brandId" />
     <result column="produce_id" jdbcType="INTEGER" property="produceId" />
     <result column="management_id" jdbcType="INTEGER" property="manangmentId" />
-    <result column="award_dt" jdbcType="VARCHAR" property="awardDt" />
-    <result column="inspection_report_path" jdbcType="VARCHAR" property="insPath" />
+    <result column="management_name" jdbcType="INTEGER" property="manangmentName" />
+    <result column="brand_name" jdbcType="VARCHAR" property="brandName" />
+    <result column="brand_id" jdbcType="INTEGER" property="brandId" />
+    <result column="start_dt" jdbcType="VARCHAR" property="startDt" />
+    <result column="end_dt" jdbcType="VARCHAR" property="endDt" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="ewm_path" jdbcType="VARCHAR" property="ewmPath" />
+    <result column="cert_id" jdbcType="VARCHAR" property="certId" />
+    <result column="create_dt" jdbcType="VARCHAR" property="createDt" />
+
   </resultMap>
   
   <select id="selectProductInfoByKey" parameterType="int" resultMap="ProductInfoMap">
-    select p.pro_name ,p.type, b.name brand_name,d.name produce_name,
+    select p.id pro_id,p.pro_name ,p.type, b.name brand_name,d.name produce_name,
            p.start_dt,p.end_dt,p.pic_path ,p.brand_id,p.produce_id,p.management_id,
-           c.award_dt,p.inspection_report_path
-    from product p , brand b, producer d ,certificate c
-    where p.pro_id =#{proId} and p.brand_id = b.id and p.produce_id = d.id and p.pro_id = c.pro_id
+           (select c.award_dt from certificate c where p.id = c.pro_id) award_dt,p.inspection_report_path
+    from product p , brand b, producer d 
+    where p.id =#{proId} and p.brand_id = b.id and p.produce_id = d.id  
+  </select>
+  
+  <select id="selectProductListVO" parameterType="map" resultMap="ProductListVOMap">
+      select p.id,p.pro_name,p.type,p.produce_id ,d.name produce_name,
+			p.management_id,m.name management_name,p.brand_id ,
+			b.name brand_name, p.start_dt,p.end_dt,p.status,p.create_dt,
+			(select c.ewm_path from certificate c where p.id = c.pro_id) ewm_path,
+			(select c.pro_id  from certificate c where p.id = c.pro_id) cert_id
+      from product p,producer d,brand b ,management m
+      where p.produce_id = d.id and p.brand_id = b.id and p.management_id = m.id
+	     <if test="userid !=null">  
+	        and p.user_id = #{userid}  
+	    </if>
+	     <if test="userid ==null">  
+	        and p.status = 'progress'  
+	    </if>
+	    <if test="proName !=null">  
+	        and p.pro_name like  CONCAT('%',#{proName},'%') 
+	    </if> 
+	    order by  p.management_id,p.pro_name
   </select>
   
 </mapper>

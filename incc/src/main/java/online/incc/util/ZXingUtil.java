@@ -33,7 +33,7 @@ public class ZXingUtil {
 
 	public static void main(String[] args) {
 		ZXingUtil
-				.encode("http://192.168.1.2:8081/incc/ewmInfo/1",
+				.encode("http://192.168.1.2:8081/incc/ewm/1",
 						300, 300, "C:\\Users\\Administrator.SD-20170401PRHN\\Desktop\\INCC_files\\ewm_certer.png", "C:\\\\Users\\\\Administrator.SD-20170401PRHN\\\\Desktop\\\\INCC_files\\p.png");
 	}
 

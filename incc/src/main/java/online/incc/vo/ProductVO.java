@@ -2,6 +2,8 @@ package online.incc.vo;
 
 public class ProductVO {
 
+	private Integer proId;
+	
 	private String proName;
 
 	private String type;
@@ -122,5 +124,13 @@ public class ProductVO {
 
 	public void setInsPath(String insPath) {
 		this.insPath = insPath;
+	}
+
+	public Integer getProId() {
+		return proId;
+	}
+
+	public void setProId(Integer proId) {
+		this.proId = proId;
 	}
 }
