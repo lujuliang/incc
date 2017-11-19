@@ -47,6 +47,9 @@ public class ShiroService {
             }
         }
         filterChainDefinitionMap.put("/ewm/**", "anon");
+        filterChainDefinitionMap.put("/", "anon");
+        filterChainDefinitionMap.put("/users/add", "anon");
+        filterChainDefinitionMap.put("/register", "anon");
         filterChainDefinitionMap.put("/**", "authc");
 
         return filterChainDefinitionMap;

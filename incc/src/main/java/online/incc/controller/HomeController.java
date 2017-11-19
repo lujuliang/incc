@@ -22,6 +22,11 @@ public class HomeController {
     public String login(){
         return "login2";
     }
+    
+    @RequestMapping(value="/register",method= RequestMethod.GET)
+    public String register(){
+        return "register";
+    }
 
     @RequestMapping(value="/login",method=RequestMethod.POST)
     public String login(HttpServletRequest request, SysUser sysUser, Model model){

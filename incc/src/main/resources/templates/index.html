@@ -1,49 +1,211 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>403 forbidden</title>
-    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
-    <link rel="stylesheet" th:href="@{/css/jquery.dataTables.min.css}" />
-    <link rel="stylesheet" th:href="@{/css/matrix-style.css}" />
-    <link rel="stylesheet" th:href="@{/css/matrix-media.css}" />
-    <link th:href="@{/font-awesome/css/font-awesome.css}" rel="stylesheet" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+<title>网络商品资质合规识别系统</title>
+<link th:href="@{/css/index.css}" rel="stylesheet" type="text/css">
+<script type="text/javascript" th:src="@{/js/jquery-1.11.2.min.js}"></script>
+<style>
+.fvfg {
+	margin: 8px auto !important;
+}
+</style>
 </head>
+
 <body>
+	<title></title>
+	<style>
+.nav {
+	cursor: pointer
+}
 
-<!--Header-part-->
-<div id="header">
-    <h1><a href="dashboard.html">Matrix Admin</a></h1>
-</div>
+#wid02 ul li {
+	width: 210px;
+}
+</style>
+	<script type="text/javascript">
+		
+	</script>
+
+	<div class="top clearfix">
+		<div class="logo">
+			<img th:src="@{/images/index.jpg}">
+		</div>
+		<div class="webmap">
+			<a href="login" target="_blank">登录</a> | <a href="register"
+				target="_blank">注册</a>
+		</div>
+		<div style="clear: both"></div>
+		<div class="nav">
+			<ul>
+				<li onmouseover="displaySubMenu(this)"
+					onmouseout="hideSubMenu(this)"><font color="#ffffff">新闻动态</font>
+					<ul>
+					</ul></li>
+				<li onmouseover="displaySubMenu(this)"
+					onmouseout="hideSubMenu(this)" id="wid02"><font
+					color="#ffffff">产品认证</font></li>
+				<li onmouseover="displaySubMenu(this)"
+					onmouseout="hideSubMenu(this)"><font color="#ffffff">法律法规</font>
+
+				</li>
+				<li><a href="#">联系我们</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="blank10" style="height: 8px;"></div>
+	<div class="blank10" style="height: 8px;"></div>
+	<div class="main">
+		<div class="left" id="left_bg">
+			<div class="meo_left">
+				<h3>
+					<span class="fd">简介</span><span class="fdr span01"><a
+						href="http://www.cfcp.cn/about/index.html" target="_blank">更多</a></span>
+				</h3>
+				<div class="zxjs">
+					<img th:src="@{/images/tu01.jpg}">
+					<p>
+						<a href="http://www.cfcp.cn/about/index.html" target="_blank"><font
+							color="#424242">中国保护消费者基金会经中国人民银行批准、民政部登记注册，于1989年11月正式成立。本会为全国性的、非营利的独立社团法人...</font></a>
+					</p>
+				</div>
+			</div>
+			<div class="meo_right">
+				<h3>
+					<span class="fd"><a>新闻快讯</a></span><span class="fdr span01"><a
+						href="http://www.cfcp.cn/news/" target="_blank">更多</a></span>
+				</h3>
+				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+					<tbody>
+						<tr>
+							<td width="15" height="155"></td>
+							<td valign="top" class="tpxw"><ul>
+
+									<li><a style="font-size: 13px;" class="font_hei12"
+										href="http://www.cfcp.cn/news/show.php?itemid=4078"
+										target="_blank">国家取缔虚拟货币交易平台 比特币断崖式下跌</a></li>
+									<li><a style="font-size: 13px;" class="font_hei12"
+										href="http://www.cfcp.cn/news/show.php?itemid=4068"
+										target="_blank">工商总局：细化七日无理由退货规定，更好保护消费者权益</a></li>
+
+									<li><a style="font-size: 13px;" class="font_hei12"
+										href="http://www.cfcp.cn/news/show.php?itemid=4043"
+										target="_blank">让“品质革命”引领“中国制造”迈向“精品制造”</a></li>
+
+								</ul></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="blank10"></div>
+			<div class="meo_left height276 he276_bg01">
+				<h3>
+					<span class="fd">认证企业</span><span class="fdr span01"><a
+						href="http://www.cfcp.cn/chengqi/list.php?catid=28576"
+						target="_blank">更多</a></span>
+				</h3>
+				<div class="li_style">
+
+					<ul>
+						<li><a class="font_hei12"
+							href="http://www.cfcp.cn/chengqi/show.php?itemid=2340"
+							title="一兆韦德健身管理有限公司" target="_blank">一兆韦德健身管理有限公司</a></li>
+
+						<li><a class="font_hei12"
+							href="http://www.cfcp.cn/chengqi/show.php?itemid=2325"
+							title="上海受业服装设计有限公司" target="_blank">上海受业服装设计有限公司..</a></li>
+
+						<li><a class="font_hei12"
+							href="http://www.cfcp.cn/chengqi/show.php?itemid=2324"
+							title="上海盛氏果业专业合作社" target="_blank">上海盛氏果业专业合作社</a></li>
+
+						<li><a class="font_hei12"
+							href="http://www.cfcp.cn/chengqi/show.php?itemid=2329"
+							title="上海翔云建筑装潢有限公司" target="_blank">海翔云建筑装潢有限公司</a></li>
+
+						<li><a class="font_hei12"
+							href="http://www.cfcp.cn/chengqi/show.php?itemid=2328"
+							title="上海夏兴稻米专业合作社" target="_blank">上海夏兴稻米专业合作社</a></li>
+
+					</ul>
+				</div>
 
 
-<div id="content">
-    <div id="content-header">
-        <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#">Sample pages</a> <a href="#" class="current">Error</a> </div>
-        <h1>Error 403</h1>
-    </div>
-    <div class="container-fluid">
-        <div class="row-fluid">
-            <div class="span12">
-                <div class="widget-box">
-                    <div class="widget-title"> <span class="icon"> <i class="icon-info-sign"></i> </span>
-                        <h5>Error 403</h5>
-                    </div>
-                    <div class="widget-content">
-                        <div class="error_ex">
-                            <h1>403</h1>
-                            <h3>Opps, You're lost.</h3>
-                            <p>Access to this page is forbidden</p>
-                            <a class="btn btn-warning btn-big"  href="/login">Back to Home</a> </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!--Footer-part-->
-<div class="row-fluid">
-    <div id="footer" class="span12"> 2017 &copy; yqj <a href="http://themedesigner.in/">Themedesigner.in</a> </div>
-</div>
+
+			</div>
+			<div class="meo_right height276 he276_bg02">
+				<h3>
+					<span class="fd">通知公告</span><span class="fdr span01"><a
+						href="http://www.cfcp.cn/announce/index.php?typeid=10"
+						target="_blank">更多</a></span>
+				</h3>
+				<div class="li_style">
+					<ul>
+						<td width="15" height="155"></td>
+						<td valign="top" class="tpxw">
+							<ul>
+
+								<li><a class="font_hei12"
+									href="http://www.cfcp.cn/announce/show.php?itemid=1235"
+									title="上海地区工作站征信申明" target="_blank">上海地区工作站征信申明</a></li>
+
+								<li><a class="font_hei12"
+									href="http://www.cfcp.cn/announce/show.php?itemid=754"
+									title="关于冒用我会名义制售防伪产品的郑重声明" target="_blank">关于冒用我会名义制售防伪产品的郑重声明..</a></li>
+
+								<li><a class="font_hei12"
+									href="http://www.cfcp.cn/announce/show.php?itemid=697"
+									title="警惕假冒3•15放心消费系统工程的违法行为" target="_blank">警惕假冒3•15放心消费系统工程的违法行为..</a></li>
+
+								<li><a class="font_hei12"
+									href="http://www.isccc.gov.cn/xwdt/zxgg/09/885091.shtml"
+									title="关于对冒用中国保护消费者基金会名义开展品牌推荐活动的警示" target="_blank">关于对冒用中国保护消费者基金会名义开展品..</a></li>
+							</ul>
+				</div>
+			</div>
+		</div>
+		<div class="right">
+
+			<h3>查询专区</h3>
+			<div class="cxxt">
+				<a href="#" target="_blank"><img th:src="@{/images/cxxt_01.jpg}"></a>
+				<a href="http://www.315fangwei.com" target="_blank"><img
+					th:src="@{/images/cxxt_02.jpg}"></a> <a
+					href="http://www.cctce.org/" target="_blank"><img
+					th:src="@{/images/cxxt_03.jpg}"></a>
+			</div>
+
+
+			<h3>法律法规</h3>
+			<div class="fvfg">
+				<ul>
+
+					<li><a class="font_hei12"
+						href="http://www.cfcp.cn/news/show.php?itemid=3992"
+						target="_blank">P2P网贷涉及相关法律问题的探讨和分析</a></li>
+					<li><a class="font_hei12"
+						href="http://www.cfcp.cn/news/show.php?itemid=3740"
+						target="_blank">网购“刷单”侵犯消费者知情权、公平交易权，属违法行为</a></li>
+					<li><a class="font_hei12"
+						href="http://www.cfcp.cn/news/show.php?itemid=3742"
+						target="_blank">发改委：国家信用体系将建立 公民将有信用代码</a></li>
+				</ul>
+			</div>
+
+		</div>
+	</div>
+	<div class="blank10"></div>
+	<table width="1002" border="0" cellspacing="0" cellpadding="0"
+		class="bottom">
+		<tbody>
+			<tr>
+				<td>网络商品资质合规识别系统 版权所有 备案号：沪ICP备00000000<br>
+					地点：上海市某路10号（大厦） 邮政编号：100000<br> 网站服务：400-000-000
+				</td>
+			</tr>
+		</tbody>
+	</table>
 </body>
 </html>
