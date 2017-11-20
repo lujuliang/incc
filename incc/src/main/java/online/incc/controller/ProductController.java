@@ -46,7 +46,7 @@ public class ProductController {
 	@PostMapping(value = "/product/save")
 	@ResponseBody
 	public String add(@ModelAttribute("productAddVO") ProductAddVO productAddVO, HttpServletRequest request) {
-		String realPath = request.getSession().getServletContext().getRealPath("/templates");
+		String realPath = request.getSession().getServletContext().getRealPath("/WEB-INF");
 		return productService.add(productAddVO, realPath);
 	}
 }

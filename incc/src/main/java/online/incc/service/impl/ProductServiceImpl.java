@@ -59,6 +59,9 @@ public class ProductServiceImpl extends BaseService<Product> implements ProductS
 	@Resource
 	private ApprovalInfoMapper approvalInfoMapper;
 
+	@Value("${online.incc.base}")
+	private String inccBase;
+	
 	@Value("${fileupload.productinfo.path}")
 	private String productinfoPath;
 	
@@ -89,9 +92,9 @@ public class ProductServiceImpl extends BaseService<Product> implements ProductS
 			String sedate = product.getStartDt() + " 至 " + product.getEndDt();
 			product.setStartDt(sedate);
 			String fileName = product.getPicPath();
-			product.setPicPath(productinfoPath+fileName);
+			product.setPicPath(inccBase+productinfoPath+fileName);
 			String insName = product.getInsPath();
-			product.setInsPath(insPath+insName);
+			product.setInsPath(inccBase+insPath+insName);
 		}
 		return product;
 	}
@@ -115,7 +118,7 @@ public class ProductServiceImpl extends BaseService<Product> implements ProductS
 		if(CollectionUtils.isNotEmpty(list)) {
 			for(ProductListVO vo : list) {
 				if(vo.getEwmPath() != null) {
-					vo.setEwmPath(ewmBasePath + vo.getEwmPath());
+					vo.setEwmPath(inccBase+ewmBasePath + vo.getEwmPath());
 				}
 			}
 		}
@@ -168,9 +171,9 @@ public class ProductServiceImpl extends BaseService<Product> implements ProductS
 		
 			product.setPicPath(profileName);
         } catch (IllegalStateException e) {
-
+        	return "error";
 		} catch (IOException e) {
-
+			return "error";
 		}
         MultipartFile insFile = vo.getInsFile();
         String insName = userId+"_"+RealPath.getCode()+"_" +proFile.getOriginalFilename();

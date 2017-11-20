@@ -22,8 +22,12 @@ public class CertificateServiceImpl extends BaseService<Certificate> implements 
 	@Resource
 	private CertificateMapper certificateMapper;
 
+	@Value("${online.incc.base}")
+	private String inccBase;
+	
 	@Value("${fileupload.ewm.path}")
-	private String ewmPath;
+	private String ewmBasePath;
+
 
 	@Override
 	public PageInfo<Certificate> selectByPage(Certificate certificate, int start, int length) {
@@ -44,7 +48,7 @@ public class CertificateServiceImpl extends BaseService<Certificate> implements 
 		Certificate certificate = super.selectByKey(key);
 		if (certificate != null) {
 			String ewm = certificate.getEwmPath();
-			certificate.setEwmPath(ewmPath + ewm);
+			certificate.setEwmPath(inccBase + ewmBasePath+ ewm);
 			String sedate = certificate.getStartDt() + " 至 " + certificate.getEndDt();
 			certificate.setStartDt(sedate);
 		}

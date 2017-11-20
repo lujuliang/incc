@@ -6,7 +6,7 @@
 	<groupId>online.incc</groupId>
 	<artifactId>incc</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>incc</name>
 	<description>Demo project for Spring Boot</description>
@@ -53,7 +53,7 @@
 			<artifactId>mapper-spring-boot-starter</artifactId>
 			<version>1.1.1</version>
 		</dependency>
-				<!--EHCache -->
+		<!--EHCache -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-cache</artifactId>
@@ -97,10 +97,21 @@
 			<version>2.4.2.1-RELEASE</version>
 		</dependency>
 
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+			<scope>provided</scope>
+		</dependency>
+
 	</dependencies>
 
 	<build>
 		<plugins>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.0.0</version>
+			</plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>

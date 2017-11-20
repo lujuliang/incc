@@ -5,7 +5,7 @@ public final class RealPath {
 	public static String getRealPath(String path) {
 	  String[] paths = path.split("\\\\");
 	  StringBuffer realPath = new StringBuffer();
-	  for(int i=0;i<paths.length-3;i++) {
+	  for(int i=0;i<paths.length-2;i++) {
 		  realPath.append(paths[i]).append("/");
 	  }
 	  realPath.append("fileupload/");

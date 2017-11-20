@@ -30,17 +30,10 @@ public class ApprovalServiceImpl extends BaseService<Product> implements Approva
 	@Resource
 	private CertificateService certificateService;
 	
-	@Value("${fileupload.productinfo.path}")
-	private String productinfoPath;
+	@Value("${online.incc.base}")
+	private String inccBase;
 	
-	@Value("${fileupload.ins.path}")
-	private String insPath;
-	
-	@Value("${fileupload.ewm.path}")
-	private String ewmBasePath;
-	
-	@Value("${ewm.url}")
-	private String ewmUrl;
+	private static String ewmUrl ="/incc/ewm/";
 	
 	@Override
 	public PageInfo<ProductListVO> selectProducts(ProductListVO productList, int start, int length) {
@@ -55,7 +48,7 @@ public class ApprovalServiceImpl extends BaseService<Product> implements Approva
 	@Override
 	@Transactional(propagation= Propagation.REQUIRED,readOnly=false,rollbackFor={Exception.class})
 	public String makesure(Certificate cert, String realPath) {
-		String certUrl = ewmUrl+cert.getProId();
+		String certUrl = inccBase + ewmUrl+cert.getProId();
 		String emwName = cert.getProId()+"_"+cert.getProName()+".png";
 		String ewmPath =RealPath.getRealPath(realPath)+"ewm/" ;
 		//1生成二维码
