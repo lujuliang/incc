@@ -1,6 +1,7 @@
 package online.incc.vo;
 
 import java.io.Serializable;
+import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -22,7 +23,7 @@ public class ProductAddVO implements Serializable{
 	private Producer producer;
 	private Management management;
 	private ApprovalInfo approvalInfo;
-//	private InspectionInfo inspectionInfo;
+	private List<InspectionInfo> inspectionInfos;
 	
 	private MultipartFile proFile;
 	private MultipartFile insFile;
@@ -74,5 +75,11 @@ public class ProductAddVO implements Serializable{
 	}
 	public void setInsFile(MultipartFile insFile) {
 		this.insFile = insFile;
+	}
+	public List<InspectionInfo> getInspectionInfos() {
+		return inspectionInfos;
+	}
+	public void setInspectionInfos(List<InspectionInfo> inspectionInfos) {
+		this.inspectionInfos = inspectionInfos;
 	}
 }

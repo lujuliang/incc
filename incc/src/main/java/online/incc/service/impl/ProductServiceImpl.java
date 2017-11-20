@@ -21,11 +21,13 @@ import com.github.pagehelper.PageInfo;
 
 import online.incc.mapper.ApprovalInfoMapper;
 import online.incc.mapper.BrandMapper;
+import online.incc.mapper.InspectionInfoMapper;
 import online.incc.mapper.ManagementMapper;
 import online.incc.mapper.ProducerMapper;
 import online.incc.mapper.ProductMapper;
 import online.incc.model.ApprovalInfo;
 import online.incc.model.Brand;
+import online.incc.model.InspectionInfo;
 import online.incc.model.Management;
 import online.incc.model.Producer;
 import online.incc.model.Product;
@@ -50,6 +52,9 @@ public class ProductServiceImpl extends BaseService<Product> implements ProductS
 	
 	@Resource
 	private BrandMapper brandMapper;
+	
+	@Resource
+	private InspectionInfoMapper inspectionInfoMapper;
 	
 	@Resource
 	private ApprovalInfoMapper approvalInfoMapper;
@@ -185,7 +190,16 @@ public class ProductServiceImpl extends BaseService<Product> implements ProductS
 		approvalInfo.setProId(product.getId());
 		approvalInfoMapper.insertUseGeneratedKeys(approvalInfo);
 		//6检测信息
-		
+		List<InspectionInfo> inspectionInfos = vo.getInspectionInfos();
+		if(!CollectionUtils.isEmpty(inspectionInfos)) {
+			for(InspectionInfo ins:inspectionInfos) {
+				if(ins.getContent() !=null && ins.getContent().length()>0 && ins.getInspOrg()!=null && ins.getInspOrg().length()>0) {
+					ins.setProId(product.getId());
+					ins.setUserId(userId);
+					inspectionInfoMapper.insertUseGeneratedKeys(ins);
+				}
+			}
+		}
 		return "success";
 	}
 

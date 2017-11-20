@@ -221,7 +221,18 @@
 		$("#managementEndDt").val(s.endDt);
 		$("#managementPermit").val(s.permit);
 	});
-	
-	
-
+	var inslength=1;
+	$("#addInsBtn").on("click",function(e){
+	    $("#ins_table").append('<tr id="ins_tr_'+inslength+'">'
+	               +'<td width="32%" height="38" class="td_gray01"><input type="text" name="inspectionInfos['+inslength+'].content"></td>'
+	               +'<td width="45%" height="38" class="td_gray01"><input type="text" name="inspectionInfos['+inslength+'].inspOrg"></td>'
+	               +'<td width="13%" height="38" class="td_gray01"><input type="text" name="inspectionInfos['+inslength+'].result"></td>'
+	               +'<td width="10%" height="38" class="td_gray01"><input type="button" value="删除" class="deleteBtn" ></td>'
+	         +'</tr>');
+	    inslength++;
+	});
+	$("#ins_table").on('click',".deleteBtn",function(){
+		$(this).parent().parent().remove();
+	    inslength--;
+	    });
 });
