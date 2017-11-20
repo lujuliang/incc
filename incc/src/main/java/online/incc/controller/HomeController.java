@@ -6,6 +6,7 @@ import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.ExcessiveAttemptsException;
 import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +22,14 @@ public class HomeController {
     @RequestMapping(value="/login",method= RequestMethod.GET)
     public String login(){
         return "login2";
+    }
+    
+    @RequestMapping(value="/logout",method= RequestMethod.GET)
+    public String logout(){
+    	 Session session = SecurityUtils.getSubject().getSession();
+         session.setAttribute("userSession", null);
+         session.setAttribute("userSessionId", null);
+        return "index";
     }
     
     @RequestMapping(value="/register",method= RequestMethod.GET)

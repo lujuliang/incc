@@ -1,7 +1,6 @@
 ﻿var table;
 		
-		$(document).ready(function() {	
-			
+		$(document).ready(function() {			
 			$('.date-picker').datepicker({
         language: 'zh-CN',
         autoclose: true,
@@ -137,5 +136,92 @@
 			}
 		});
 	});
+	
+	var brands =[];
+	$.ajax({
+        type: "GET",
+        url: 'brand/brands',
+        cache : false,  //禁用缓存
+        dataType: "json",
+        success: function(result) {
+        	brands = result;
+        	var optionstring = "";
+            for (var j = 0; j < result.length; j++) {
+                optionstring += "<option value=\"" + result[j].id + "\" >" + result[j].name + "</option>";
+            }
+            $("#brandSel").html("<option value='0'>请选择...</option> "+optionstring);
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+            alert("查询失败");
+        }
+    });
+	
+	$("#brandSel").on("change",function(e){
+		var s = _.find(brands,['id',_.toNumber($("#brandSel").val())]);
+		$("#brandName").val(s.name);
+		$("#brandStatus").val(s.status);
+		$("#brandNum").val(s.num);
+		$("#brandAuthor").val(s.author);
+	});
+	
+	
+	var producers =[];
+	$.ajax({
+        type: "GET",
+        url: 'producer/producers',
+        cache : false,  //禁用缓存
+        dataType: "json",
+        success: function(result) {
+        	producers = result;
+        	var optionstring = "";
+            for (var j = 0; j < result.length; j++) {
+                optionstring += "<option value=\"" + result[j].id + "\" >" + result[j].name + "</option>";
+            }
+            $("#producerSel").html("<option value='0'>请选择...</option> "+optionstring);
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+            alert("查询失败");
+        }
+    });
+	
+	$("#producerSel").on("change",function(e){
+		var s = _.find(producers,['id',_.toNumber($("#producerSel").val())]);
+		$("#producerName").val(s.name);
+		$("#producerCreditCode").val(s.creditCode);
+		$("#producerStartDt").val(s.startDt);
+		$("#producerEndDt").val(s.endDt);
+		$("#producerPermit").val(s.permit);
+	});
+	
+	
+	var managements =[];
+	$.ajax({
+        type: "GET",
+        url: 'management/managements',
+        cache : false,  //禁用缓存
+        dataType: "json",
+        success: function(result) {
+        	managements = result;
+        	var optionstring = "";
+            for (var j = 0; j < result.length; j++) {
+                optionstring += "<option value=\"" + result[j].id + "\" >" + result[j].name + "</option>";
+            }
+            $("#managementSel").html("<option value='0'>请选择...</option> "+optionstring);
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+            alert("查询失败");
+        }
+    });
+	
+	$("#managementSel").on("change",function(e){
+		var s = _.find(managements,['id',_.toNumber($("#managementSel").val())]);
+		$("#managementName").val(s.name);
+		$("#managementCreditCode").val(s.creditCode);
+		$("#managementStartDt").val(s.startDt);
+		$("#managementEndDt").val(s.endDt);
+		$("#managementPermit").val(s.permit);
+	});
+	
+	
 
 });
