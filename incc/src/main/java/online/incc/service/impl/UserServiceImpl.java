@@ -73,18 +73,20 @@ public class UserServiceImpl extends BaseService<SysUser> implements UserService
     }
 
 	@Override
+	@Transactional(propagation= Propagation.REQUIRED,readOnly=false,rollbackFor={Exception.class})
 	public void saveUserAndRole(SysUser sysUser) {
 		super.save(sysUser);
 		if(sysUser.getType() == 0) {//会员用户分配默认权限
 			Example example = new Example(SysRole.class);
 	        Example.Criteria criteria = example.createCriteria();
-	        criteria.andEqualTo("roledesc","会员");
+	        criteria.andEqualTo("id",6);
 			List<SysRole> roles = roleMapper.selectByExample(example);
-			SysUserRole ur = new SysUserRole();
-			ur.setRoleid(roles.get(0).getId()+"");
-			ur.setUserid(sysUser.getId());
-			userRoleMapper.insert(ur);
-			
+			if(!roles.isEmpty()) {
+				SysUserRole ur = new SysUserRole();
+				ur.setRoleid(roles.get(0).getId()+"");
+				ur.setUserid(sysUser.getId());
+				userRoleMapper.insert(ur);
+			}	
 		}
 		
 	}

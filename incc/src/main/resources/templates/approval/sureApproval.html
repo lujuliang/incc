@@ -6,9 +6,11 @@
     <meta content="black" name="apple-mobile-web-app-status-bar-style">
     <meta content="telephone=no" name="format-detection">
     <link rel="stylesheet" th:href="@{/css/ewm.css}" />
+    <link rel="stylesheet" th:href="@{/css/bootstrap-datepicker.css}" />
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
 	<script type="text/javascript" th:src="@{/js/jquery-1.11.2.min.js}"></script>
 	<script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+	<script th:src="@{/js/bootstrap-datepicker.min.js}" ></script>
 	<script th:src="@{/js/layer.js}"></script>
     <title>INCC</title>
     <style type="text/css">
@@ -44,12 +46,22 @@
             商品类型： <b th:text="${product.type}"></b>	    <br>
             出品机构： <b th:text="${product.produceName}"></b>	    <br>
             品牌名称： <b th:text="${product.brandName}"></b><br>
-            标识效期： <b th:text="${product.startDt}"></b> </p>
+            标识效期： <b> 
+		   </b> 
+        </p>
+        <div class="input-append date date-picker" id="datetimepicker" data-date-format="yyyy-mm-dd">
+				    <input class="span2" size="16" type="text"  id="startDt">
+				    <span class="add-on"><i class="icon-th"></i></span>
+		</div>  
+		至
+		 <div class="input-append date date-picker" id="datetimepicker" data-date-format="yyyy-mm-dd">
+				    <input class="span2" size="16" type="text"  id="endDt">
+				    <span class="add-on"><i class="icon-th"></i></span>
+		</div>  
            <input type="hidden" id="proId" th:value="${product.proId}">
            <input type="hidden" id="proName" th:value="${product.proName}">
            <input type="hidden" id="produceName" th:value="${product.produceName}">
            <input type="hidden" id="brandName" th:value="${product.brandName}">
-           <input type="hidden" id="startDt" th:value="${product.startDt}">
     </div>
     <div class="clear"></div>
     <div id="info">
@@ -63,7 +75,7 @@
 
     <div class="clear"></div>
     <div id="info">
-        <p><strong>行政审批许可信息</strong></p>
+        <p><strong>销售行政许可信息</strong></p>
         <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="#CCCCCC" class="box01">
             <tbody><tr>
                 <td width="32%" height="38" class="td_gray01">审批项目</td>
@@ -86,6 +98,14 @@
                 <td height="38" class="td_gray01">-</td>
             </tr>
         </tbody></table>
+        <div id="info">
+        <p><strong>许可证扫描件：</strong><br>
+        </p>
+           <div id="commodityPic" class="pro_img">
+             <img th:src="${approvalInfo.picPath}" id="proImg">
+           </div>
+        <p></p>
+    </div>
         <p></p>
     </div>
 
@@ -131,7 +151,7 @@
                 <td height="38" class="td_gray01">--</td>
             </tr>
             <tr>
-                <td height="38" class="td_gray01">保健食品生产销售行政许可</td>
+                <td height="38" class="td_gray01">生产销售行政许可</td>
                 <td height="38" class="td_gray01"  th:text="${management.permit}"></td>
                 <td height="38" class="td_gray01">--</td>
             </tr>
@@ -187,7 +207,7 @@
                 <td height="38" class="td_gray01">--</td>
             </tr>
             <tr>
-                <td height="38" class="td_gray01">保健食品生产销售行政许可</td>
+                <td height="38" class="td_gray01">生产销售行政许可</td>
                 <td height="38" class="td_gray01" th:text="${producer.permit}"></td>
                 <td height="38" class="td_gray01">--</td>
             </tr>
@@ -228,6 +248,13 @@
 </body>
 <script type="text/javascript">
   $(document).ready(function() {
+	  
+	  $('.date-picker').datepicker({
+	        language: 'zh-CN',
+	        autoclose: true,
+	        todayHighlight: true
+	    });
+	  
       $("#sureBtn").on("click",function(){
     	  $("#query_hint").css('display','block');
     	  $("#sureBtn").attr("disabled",true); 
@@ -236,14 +263,14 @@
     			  "proName":$("#proName").val(),
     			  "produceName":$("#produceName").val(),
     			  "brandName":$("#brandName").val(),
-    			  "startDt":$("#startDt").val().split("至")[0],
-    			  "endDt":$("#startDt").val().split("至")[1],
+    			  "startDt":$("#startDt").val(),
+    			  "endDt":$("#endDt").val(),
     			  "awardOrg":"中国保护消费者基金会"
     			  };
     	  $.ajax({
   			cache : false,
   			type : "POST",
-  			url : '/incc/approval/makesure',
+  			url : '/approval/makesure',
   			data:JSON.stringify(data), 
   			dataType:"text",        
             contentType:"application/json",                 

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -14,13 +15,18 @@ import online.incc.mapper.ApprovalInfoMapper;
 import online.incc.model.ApprovalInfo;
 import online.incc.model.Product;
 import online.incc.service.ApprovalInfoService;
-import online.incc.vo.ProductVO;
 import tk.mybatis.mapper.entity.Example;
 
 @Service("approvalInfoService")
 public class ApprovalInfoServiceImpl extends BaseService<ApprovalInfo> implements ApprovalInfoService {
 	@Resource
 	private ApprovalInfoMapper approvalInfoMapper;
+	
+	@Value("${online.incc.base}")
+	private String inccBase;
+	
+	@Value("${fileupload.approval.path}")
+	private String approvalPath;
 
 	@Override
 	public PageInfo<ApprovalInfo> selectByPage(ApprovalInfo approvalInfo, int start, int length) {
@@ -42,7 +48,10 @@ public class ApprovalInfoServiceImpl extends BaseService<ApprovalInfo> implement
 		List<ApprovalInfo> list = approvalInfoMapper.selectByExample(example);
 		
 		if(list.size()>0) {
-		   return list.get(0);
+			ApprovalInfo info = list.get(0);
+			String picName = info.getPicPath();
+			info.setPicPath(inccBase+approvalPath+picName);
+		   return info;
 		}else {
 			return new ApprovalInfo();
 		}

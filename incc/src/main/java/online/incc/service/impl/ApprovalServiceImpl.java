@@ -33,7 +33,7 @@ public class ApprovalServiceImpl extends BaseService<Product> implements Approva
 	@Value("${online.incc.base}")
 	private String inccBase;
 	
-	private static String ewmUrl ="/incc/ewm/";
+	private static String ewmUrl ="/ewm/";
 	
 	@Override
 	public PageInfo<ProductListVO> selectProducts(ProductListVO productList, int start, int length) {
@@ -65,6 +65,8 @@ public class ApprovalServiceImpl extends BaseService<Product> implements Approva
 		Product p = new Product();
 		p.setStatus("pass");
 		p.setId(cert.getProId());
+		p.setStartDt(cert.getStartDt());
+		p.setEndDt(cert.getEndDt());
 		productMapper.updateByPrimaryKeySelective(p);
 		return "success";
 	}

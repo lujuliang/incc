@@ -186,11 +186,24 @@ public class ProductServiceImpl extends BaseService<Product> implements ProductS
             return "error";
 		}
         
+        
 		productMapper.insertUseGeneratedKeys(product);
 		//5审批信息
 		ApprovalInfo approvalInfo = vo.getApprovalInfo();
 		approvalInfo.setUserId(userId);
 		approvalInfo.setProId(product.getId());
+		
+		MultipartFile approvalFile = vo.getApprovalFile();
+        String approvalName = userId+"_"+RealPath.getCode()+"_" + approvalFile.getOriginalFilename();
+        try {
+        	approvalFile.transferTo(new File(realBasePath+"/approval/"+approvalName));
+        	approvalInfo.setPicPath(approvalName);
+		} catch (IllegalStateException e) {
+			 return "error";
+		} catch (IOException e) {
+            return "error";
+		}
+		
 		approvalInfoMapper.insertUseGeneratedKeys(approvalInfo);
 		//6检测信息
 		List<InspectionInfo> inspectionInfos = vo.getInspectionInfos();

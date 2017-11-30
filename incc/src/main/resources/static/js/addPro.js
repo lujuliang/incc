@@ -5,7 +5,7 @@
         language: 'zh-CN',
         autoclose: true,
         todayHighlight: true
-    })
+    });
 	
 	$('#proFile').fileinput({
         language: 'zh', //设置语言
@@ -31,6 +31,18 @@
         msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
     });
 	
+	$('#approvalFile').fileinput({
+        language: 'zh', //设置语言
+        allowedFileExtensions : ['jpg', 'png','gif'],//接收的文件后缀,
+        maxFileCount: 1,
+        enctype: 'multipart/form-data',
+        showUpload: false, //是否显示上传按钮
+        showCaption: false,//是否显示标题
+        browseClass: "btn btn-primary", //按钮样式             
+        previewFileIcon: "<i class='glyphicon glyphicon-king'></i>", 
+        msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
+    });
+	
 	function isNil(item){
 		return item ==""||item==undefined||item==null;
 	}
@@ -41,8 +53,9 @@
 		
 		var proName = $("#proName").val();
 		var type = $("#type").val();
-		var productstartDt = $("#productstartDt").val();
+
 		var proFile = $("#proFile").val();
+		var approvalFile = $("#approvalFile").val();
 		var approvalInfoName = $("#approvalInfoName").val();
 		var approvalInfoDtTerm = $("#approvalInfoDtTerm").val();
 		var approvalInfoAuditNum = $("#approvalInfoAuditNum").val();
@@ -60,8 +73,7 @@
 		var producerName = $("#producerName").val();
 		var producerCreditCode = $("#producerCreditCode").val();
 		var producerPermit = $("#producerPermit").val();
-		var producerStartDt = $("#producerStartDt").val();
-		var producerEndDt = $("#producerEndDt").val();
+
 		if (isNil(proName)) {
 			return layer.msg('请填写商品名称', function() {
 				//关闭后的操作
@@ -72,13 +84,15 @@
 				//关闭后的操作
 			});
 		}
-		if(isNil(productstartDt) ){
-			return layer.msg('请填写商品有效期', function() {
+
+		if(isNil(proFile)){
+			return layer.msg('请上传产品图片', function() {
 				//关闭后的操作
 			});
 		}
-		if(isNil(proFile)){
-			return layer.msg('请上传产品图片', function() {
+		
+		if(isNil(approvalFile)){
+			return layer.msg('请上传销售许可扫描件', function() {
 				//关闭后的操作
 			});
 		}

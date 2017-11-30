@@ -27,6 +27,7 @@ public class ProductAddVO implements Serializable{
 	
 	private MultipartFile proFile;
 	private MultipartFile insFile;
+	private MultipartFile approvalFile;
 	
 	public Product getProduct() {
 		return product;
@@ -81,5 +82,11 @@ public class ProductAddVO implements Serializable{
 	}
 	public void setInspectionInfos(List<InspectionInfo> inspectionInfos) {
 		this.inspectionInfos = inspectionInfos;
+	}
+	public MultipartFile getApprovalFile() {
+		return approvalFile;
+	}
+	public void setApprovalFile(MultipartFile approvalFile) {
+		this.approvalFile = approvalFile;
 	}
 }
