@@ -136,9 +136,22 @@ public class ProductServiceImpl extends BaseService<Product> implements ProductS
 		String realBasePath = RealPath.getRealPath(realPath);
 		//1经营主体
 		Management management = vo.getManagement();
-		if(management.getId() == 0) {//初次提交
+		if(management != null && management.getId() == null) {//初次提交
 			management.setCreateDt(dateStr);
 			management.setUserId(userId);
+			
+			//上传图片
+			MultipartFile manageFile = vo.getManageFile();
+	        String manageFileName = userId+"_"+RealPath.getCode()+"_" +manageFile.getOriginalFilename();
+	        try {
+	        	manageFile.transferTo(new File(realBasePath+ "/management/"+manageFileName));
+	        	management.setLicensePic(manageFileName);;
+	        } catch (IllegalStateException e) {
+	        	return "error";
+			} catch (IOException e) {
+				return "error";
+			}
+			
 			managementMapper.insertUseGeneratedKeys(management);
 		}
 		//2生产主体
@@ -190,21 +203,22 @@ public class ProductServiceImpl extends BaseService<Product> implements ProductS
 		productMapper.insertUseGeneratedKeys(product);
 		//5审批信息
 		ApprovalInfo approvalInfo = vo.getApprovalInfo();
-		approvalInfo.setUserId(userId);
-		approvalInfo.setProId(product.getId());
-		
-		MultipartFile approvalFile = vo.getApprovalFile();
-        String approvalName = userId+"_"+RealPath.getCode()+"_" + approvalFile.getOriginalFilename();
-        try {
-        	approvalFile.transferTo(new File(realBasePath+"/approval/"+approvalName));
-        	approvalInfo.setPicPath(approvalName);
-		} catch (IllegalStateException e) {
-			 return "error";
-		} catch (IOException e) {
-            return "error";
+		if(approvalInfo != null && approvalInfo.getId() == 0) {
+			approvalInfo.setUserId(userId);
+			MultipartFile approvalFile = vo.getApprovalFile();
+	        String approvalName = userId+"_"+RealPath.getCode()+"_" + approvalFile.getOriginalFilename();
+	        try {
+	        	approvalFile.transferTo(new File(realBasePath+"/approval/"+approvalName));
+	        	approvalInfo.setPicPath(approvalName);
+			} catch (IllegalStateException e) {
+				 return "error";
+			} catch (IOException e) {
+	            return "error";
+			}
+			
+			approvalInfoMapper.insertUseGeneratedKeys(approvalInfo);
 		}
-		
-		approvalInfoMapper.insertUseGeneratedKeys(approvalInfo);
+
 		//6检测信息
 		List<InspectionInfo> inspectionInfos = vo.getInspectionInfos();
 		if(!CollectionUtils.isEmpty(inspectionInfos)) {

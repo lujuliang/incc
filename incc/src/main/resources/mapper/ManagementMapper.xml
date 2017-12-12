@@ -13,5 +13,6 @@
     <result column="credit_code" jdbcType="VARCHAR" property="creditCode" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="create_dt" jdbcType="VARCHAR" property="createDt" />
+    <result column="license_pic" jdbcType="VARCHAR" property="licensePic" />
   </resultMap>
 </mapper>

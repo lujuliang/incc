@@ -11,8 +11,7 @@
             <tr>
                 <td height="38" class="td_gray01"> 商品类型：<span style="color:red">*</span></td>
                 <td height="38" class="td_gray01"><input type="text" id="type" name="product.type"></td>
-            </tr>
-           
+            </tr>         
              <tr>
                 <td height="38" class="td_gray01">商品图片：<span style="color:red">*</span></td>
                 <td height="38" class="td_gray01"><input type="file" class="projectfile" id="proFile" name="proFile" />
@@ -22,38 +21,7 @@
     </div>
 
     <div class="clear"></div>
-    <div id="info">
-        <p><h3>销售行政许可信息</h3></p>
-        <table width="80%" border="1" cellpadding="0" cellspacing="0" bordercolor="#CCCCCC" class="box01">
-            <tr>
-                <td width="10%" height="38" class="td_gray01">审批项目:<span style="color:red">*</span></td>
-                <td width="55%" height="38" class="td_gray01"><input type="text" id="approvalInfoName" name="approvalInfo.name"></td>
-            </tr>
-            <tr>
-                <td height="38" class="td_gray01">凭证号码:<span style="color:red">*</span></td>
-                <td height="38" class="td_gray01"><input type="text" id="approvalInfoAuditNum" name="approvalInfo.auditNum"></td>
-            </tr>
-            <tr>
-                <td height="38" class="td_gray01">有效期至:<span style="color:red">*</span></td>
-                <td height="38" class="td_gray01">
-                <div class="input-append date date-picker" id="datetimepicker" data-date-format="yyyy-mm-dd">
-				    <input class="span2" size="16" type="text" name="approvalInfo.dtTerm" id="approvalInfoDtTerm">
-				    <span class="add-on"><i class="icon-th"></i></span>
-				</div> 
-               </td>
-            </tr>
-            <tr>
-                <td height="38" class="td_gray01">审批机构:<span style="color:red">*</span></td>
-                <td height="38" class="td_gray01"><input type="text" id="approvalInfoApprovOrg" name="approvalInfo.approvOrg"></td>
-            </tr>
-             <tr>
-                <td height="38" class="td_gray01">许可证扫描件：<span style="color:red">*</span></td>
-                <td height="38" class="td_gray01"><input type="file" class="approvalfile" id="approvalFile" name="approvalFile" />
-                </td>
-            </tr>
-        </table>
-        <p></p>
-    </div>
+    
 
     <div id="info">
         <p><h3>商品检测信息</h3></p>
@@ -84,14 +52,12 @@
     </div>
     <div id="info">
         <p><h3>经营主体</h3></p>
-
         <table width="80%" border="1" cellpadding="0" cellspacing="0" bordercolor="#CCCCCC" class="box01">
             <tbody>
             <tr>
-                <td width="10%" height="38" class="td_gray01">选择经营主体:</td>
+                <td width="10%" height="38" class="td_gray01">经营主体:</td>
                 <td width="55%" height="38" class="td_gray01">
                 <select id="managementSel" name="management.id">
-                  <option value='0'>请选择经营主体</option>
         		</select></td>
             </tr>
             <tr>
@@ -118,13 +84,54 @@
                  </td>
             </tr>
             <tr>
-                <td height="38" class="td_gray01">生产行政许可:<span style="color:red">*</span></td>
+                <td height="38" class="td_gray01">销售行政许可:<span style="color:red">*</span></td>
                 <td height="38" class="td_gray01"><input type="text" id="managementPermit" name="management.permit"></td>
+            </tr>
+            <tr class="tr_manageFile">
+                <td height="38" class="td_gray01">营业执照：<span style="color:red">*</span></td>
+                <td height="38" class="td_gray01"><input type="file" class="projectfile" id="manageFile" name="manageFile" />
+                </td>
             </tr>
         </tbody></table>
 
         <p></p>
     </div>
+    
+    <div id="info">
+        <p><h3>行政审批许可信息</h3></p>
+        <table width="80%" border="1" cellpadding="0" cellspacing="0" bordercolor="#CCCCCC" class="box01">
+            <tr>
+                <td width="10%" height="38" class="td_gray01">审批项目:<span style="color:red">*</span></td>
+                <td width="55%" height="38" class="td_gray01">
+                <input type="hidden" id="approvalInfoId" name="approvalInfo.id" value="0">
+                <input type="text" id="approvalInfoName" name="approvalInfo.name"></td>
+            </tr>
+            <tr>
+                <td height="38" class="td_gray01">凭证号码:<span style="color:red">*</span></td>
+                <td height="38" class="td_gray01"><input type="text" id="approvalInfoAuditNum" name="approvalInfo.auditNum"></td>
+            </tr>
+            <tr>
+                <td height="38" class="td_gray01">有效期至:<span style="color:red">*</span></td>
+                <td height="38" class="td_gray01">
+                <div class="input-append date date-picker" id="datetimepicker" data-date-format="yyyy-mm-dd">
+				    <input class="span2" size="16" type="text" name="approvalInfo.dtTerm" id="approvalInfoDtTerm">
+				    <span class="add-on"><i class="icon-th"></i></span>
+				</div> 
+               </td>
+            </tr>
+            <tr>
+                <td height="38" class="td_gray01">审批机构:<span style="color:red">*</span></td>
+                <td height="38" class="td_gray01"><input type="text" id="approvalInfoApprovOrg" name="approvalInfo.approvOrg"></td>
+            </tr>
+             <tr class="tr_file">
+                <td height="38" class="td_gray01">许可证扫描件：<span style="color:red">*</span></td>
+                <td height="38" class="td_gray01"><input type="file" class="approvalfile" id="approvalFile" name="approvalFile" />
+                </td>
+            </tr>
+        </table>
+        <p></p>
+    </div>
+    
     <div id="info">
         <p><h3>品牌信息</h3></p>
         

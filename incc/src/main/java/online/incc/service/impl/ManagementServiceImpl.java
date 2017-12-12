@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +22,12 @@ public class ManagementServiceImpl extends BaseService<Management> implements Ma
 	@Resource
 	private ManagementMapper managementMapper;
 
+	@Value("${online.incc.base}")
+	private String inccBase;
+	
+	@Value("${fileupload.license.path}")
+	private String licensePath;
+	
 	@Override
 	public PageInfo<Management> selectByPage(Management management, int start, int length) {
 		int page = start / length + 1;
@@ -39,7 +46,11 @@ public class ManagementServiceImpl extends BaseService<Management> implements Ma
 		if(management != null) {
 			String start = management.getStartDt();
 			String end = management.getEndDt();
-			management.setStartDt(start+"至"+end);
+			management.setStartDt(start+"至"+end); 
+			String picPath = management.getLicensePic();
+			if(picPath != null) {
+				management.setLicensePic(inccBase+licensePath+picPath);
+			}
 		}
 		return management;
 	}

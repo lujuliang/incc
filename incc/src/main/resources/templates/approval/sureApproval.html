@@ -50,11 +50,13 @@
 		   </b> 
         </p>
         <div class="input-append date date-picker" id="datetimepicker" data-date-format="yyyy-mm-dd">
+                    <span style="color:red">*</span>
 				    <input class="span2" size="16" type="text"  id="startDt">
 				    <span class="add-on"><i class="icon-th"></i></span>
 		</div>  
 		至
 		 <div class="input-append date date-picker" id="datetimepicker" data-date-format="yyyy-mm-dd">
+		            <span style="color:red">*</span>
 				    <input class="span2" size="16" type="text"  id="endDt">
 				    <span class="add-on"><i class="icon-th"></i></span>
 		</div>  
@@ -99,13 +101,13 @@
             </tr>
         </tbody></table>
         <div id="info">
-        <p><strong>许可证扫描件：</strong><br>
-        </p>
-           <div id="commodityPic" class="pro_img">
-             <img th:src="${approvalInfo.picPath}" id="proImg">
-           </div>
-        <p></p>
-    </div>
+	        <p><strong>许可证扫描件：</strong><br>
+	        </p>
+	           <div id="commodityPic" class="pro_img">
+	             <img th:src="${approvalInfo.picPath}" id="proImg">
+	           </div>
+	        <p></p>
+        </div>
         <p></p>
     </div>
 
@@ -156,7 +158,14 @@
                 <td height="38" class="td_gray01">--</td>
             </tr>
         </tbody></table>
-
+       <div id="info">
+	        <p><strong>营业执照：</strong><br>
+	        </p>
+	           <div id="commodityPic" class="pro_img">
+	             <img th:src="${management.licensePic}" id="proImg">
+	           </div>
+	        <p></p>
+        </div>
         <p></p>
     </div>
     <div id="info">
@@ -255,7 +264,21 @@
 	        todayHighlight: true
 	    });
 	  
+	function isNil(item){
+		return item ==""||item==undefined||item==null;
+	}
+	  
       $("#sureBtn").on("click",function(){
+    	  
+   	    var startDt = $("#startDt").val();
+   	    var endDt = $("#endDt").val();
+
+  		if (isNil(startDt) || isNil(endDt)) {
+  			return layer.msg('商品有效期限填写不完整', function() {
+  				//关闭后的操作
+  			});
+  		}
+    	  
     	  $("#query_hint").css('display','block');
     	  $("#sureBtn").attr("disabled",true); 
     	  var data={

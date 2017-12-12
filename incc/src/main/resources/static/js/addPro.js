@@ -43,9 +43,23 @@
         msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
     });
 	
+	$('#manageFile').fileinput({
+        language: 'zh', //设置语言
+        allowedFileExtensions : ['jpg', 'png','gif'],//接收的文件后缀,
+        maxFileCount: 1,
+        enctype: 'multipart/form-data',
+        showUpload: false, //是否显示上传按钮
+        showCaption: false,//是否显示标题
+        browseClass: "btn btn-primary", //按钮样式             
+        previewFileIcon: "<i class='glyphicon glyphicon-king'></i>", 
+        msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
+    });
+	
 	function isNil(item){
 		return item ==""||item==undefined||item==null;
 	}
+	
+	var hasNoCom = true;
 	
 	$("#applyBtn").click(function(){
 		var form = $('#addform')[0];
@@ -55,8 +69,10 @@
 		var type = $("#type").val();
 
 		var proFile = $("#proFile").val();
+
 		var approvalFile = $("#approvalFile").val();
 		var approvalInfoName = $("#approvalInfoName").val();
+		var manageFile = $("#manageFile").val();
 		var approvalInfoDtTerm = $("#approvalInfoDtTerm").val();
 		var approvalInfoAuditNum = $("#approvalInfoAuditNum").val();
 		var approvalInfoApprovOrg = $("#approvalInfoApprovOrg").val();
@@ -73,6 +89,8 @@
 		var producerName = $("#producerName").val();
 		var producerCreditCode = $("#producerCreditCode").val();
 		var producerPermit = $("#producerPermit").val();
+		var producerStartDt = $("#producerStartDt").val();
+		var producerEndDt = $("#producerEndDt").val();
 
 		if (isNil(proName)) {
 			return layer.msg('请填写商品名称', function() {
@@ -91,7 +109,7 @@
 			});
 		}
 		
-		if(isNil(approvalFile)){
+		if(isNil(approvalFile) && hasNoCom){
 			return layer.msg('请上传销售许可扫描件', function() {
 				//关闭后的操作
 			});
@@ -105,6 +123,12 @@
 		}
 		if(isNil(insFile)){
 			return layer.msg('请上传检测报告', function() {
+				//关闭后的操作
+			});
+		}
+		
+		if(isNil(manageFile)  && hasNoCom){
+			return layer.msg('请上传营业执照', function() {
 				//关闭后的操作
 			});
 		}
@@ -220,21 +244,48 @@
             for (var j = 0; j < result.length; j++) {
                 optionstring += "<option value=\"" + result[j].id + "\" >" + result[j].name + "</option>";
             }
-            $("#managementSel").html("<option value='0'>请选择...</option> "+optionstring);
+            if(managements.length>0){
+            	hasNoCom = false;
+                $("#managementSel").html(optionstring);
+                $("#managementSel").attr("readonly",true);
+                var data = managements[0];
+                $("#managementSel").val(data.id);
+                $("#managementName").val(data.name).attr("disabled","disabled");
+        		$("#managementCreditCode").val(data.creditCode).attr("disabled","disabled");
+        		$("#managementStartDt").val(data.startDt).attr("disabled","disabled");
+        		$("#managementEndDt").val(data.endDt).attr("disabled","disabled");
+        		$("#managementPermit").val(data.permit).attr("disabled","disabled");
+        		$(".tr_manageFile").css("display","none");
+            }
+
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+            alert("查询失败2");
+        }
+    });
+	
+	$.ajax({
+        type: "GET",
+        url: 'management/approvalInfo',
+        cache : false,  //禁用缓存
+        dataType: "json",
+        success: function(data) {	
+            if(!_.isNil(data) && !_.isNil(data.id)){
+            	$("#approvalInfoId").val(data.id);
+              $("#approvalInfoName").val(data.name).attr("disabled","disabled");
+        		$("#approvalInfoAuditNum").val(data.auditNum).attr("disabled","disabled");
+        		$("#approvalInfoDtTerm").val(data.dtTerm).attr("disabled","disabled");
+        		$("#approvalInfoApprovOrg").val(data.approvOrg).attr("disabled","disabled");
+        		$(".tr_file").css("display","none");
+            }
+
         },
         error: function(XMLHttpRequest, textStatus, errorThrown) {
             alert("查询失败");
         }
     });
 	
-	$("#managementSel").on("change",function(e){
-		var s = _.find(managements,['id',_.toNumber($("#managementSel").val())]);
-		$("#managementName").val(s.name);
-		$("#managementCreditCode").val(s.creditCode);
-		$("#managementStartDt").val(s.startDt);
-		$("#managementEndDt").val(s.endDt);
-		$("#managementPermit").val(s.permit);
-	});
+	
 	var inslength=1;
 	$("#addInsBtn").on("click",function(e){
 	    $("#ins_table").append('<tr id="ins_tr_'+inslength+'">'

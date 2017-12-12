@@ -33,8 +33,19 @@ public class Management implements Serializable{
 
     @Column(name = "create_dt")
     private String createDt;
+    
+    @Column(name = "license_pic")
+    private String licensePic;
 
-    /**
+    public String getLicensePic() {
+		return licensePic;
+	}
+
+	public void setLicensePic(String licensePic) {
+		this.licensePic = licensePic;
+	}
+
+	/**
      * @return id
      */
     public Integer getId() {
