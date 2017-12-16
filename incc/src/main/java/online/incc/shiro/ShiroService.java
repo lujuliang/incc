@@ -50,6 +50,10 @@ public class ShiroService {
         filterChainDefinitionMap.put("/", "anon");
         filterChainDefinitionMap.put("/users/add", "anon");
         filterChainDefinitionMap.put("/register", "anon");
+        filterChainDefinitionMap.put("/news", "anon");
+        filterChainDefinitionMap.put("/news/news", "anon");
+        filterChainDefinitionMap.put("/laws", "anon");
+        filterChainDefinitionMap.put("/notes", "anon");
         filterChainDefinitionMap.put("/**", "authc");
 
         return filterChainDefinitionMap;

@@ -131,7 +131,6 @@ public class ProductServiceImpl extends BaseService<Product> implements ProductS
 	public String add(ProductAddVO vo,String realPath) {
 		Date d = new Date();
 		String dateStr = d.toLocaleString();
-		d.toLocaleString();
 		Integer userId = userId();
 		String realBasePath = RealPath.getRealPath(realPath);
 		//1经营主体

@@ -485,7 +485,8 @@ width:70px; text-align:center;
 }
 #header p {
 	margin-top:3.5rem;
-	line-height: 30px;
+	line-height: 50px;
+	font-size: 32px;
 }
 #header p b{
 	padding-bottom:2px; border-bottom:1px solid #000;
@@ -495,10 +496,20 @@ width:70px; text-align:center;
 		clear:both;
 }
 
-#info p{
+#info table tr td{
+	line-height: 40px;
+	font-size: 26px;
+}
 
+#info ul{
+	line-height: 50px;
+	font-size: 24px;
+}
+
+#info p{
+    font-size: 28px;
 	margin-top:1rem;
-	line-height: 30px;
+	line-height: 40px;
 }
 #info p b{
 	padding-bottom:2px;
