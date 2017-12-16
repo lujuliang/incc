@@ -9,7 +9,7 @@
 <div class="container">
   <div class="hero-unit">
   <div class="pull-right"></div>
-	<h4 style="text-align: center;">添加新闻 <br/> <span>新闻标题:&nbsp;</span><input style="height: 26px; width:450px; margin-top: 10px;" type="text" id="title" ></h4>
+	<h4 style="text-align: center;">添加法规 <br/> <span>法规标题:&nbsp;</span><input style="height: 26px; width:450px; margin-top: 10px;" type="text" id="title" ></h4>
 	<hr/>
 	<div id="alerts"></div>
     <div class="btn-toolbar" data-role="editor-toolbar" data-target="#editor">
@@ -74,29 +74,29 @@
 
 	<script type="text/javascript">
 	  $(function(){
+		  
 			function isNil(item){
 				return item==null || item.trim() ==""||item==undefined;
 			}
 		  
-		   $("#btn_get").click(function(){
-				  
-			  var title = $("#title").val();
-			  var content = $("#editor").html();
-			  if(isNil(title) || isNil(content)){
-					return layer.msg('请填写完整', function() {
-						//关闭后的操作
-					});
-				}
+		   $("#btn_get").click(function(){	   
+			   var title = $("#title").val();
+			   var content = $("#editor").html();
+				  if( isNil(title)|| isNil(content)){
+						return layer.msg('请填写完整', function() {
+							//关闭后的操作
+						});
+					}
 			   
 		      $.ajax({
 		          type : "POST",
 		          contentType: "application/json",
 		          data:JSON.stringify({title:$("#title").val(), content:$("#editor").html()}),
-		          url: 'news/save',
+		          url: 'laws/save',
 		          dataType:'text',
 		          async: false,
 		          success: function(data){
-					$("#content").load("newsList");
+					$("#content").load("lawsList");
 		          }
 		      });
 		      

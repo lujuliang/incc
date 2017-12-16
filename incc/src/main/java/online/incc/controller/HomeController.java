@@ -133,4 +133,35 @@ public class HomeController {
     public String approvalPage(){
         return "approval/approval";
     }
+    
+    @RequestMapping("/notes")
+    public String notes(){
+    	return "notes";
+    }
+    
+    @RequestMapping("/notesList")
+    public String notesList(){
+    	return "notes/notesList";
+    }
+    
+    @RequestMapping("/addNotes")
+    public String addNotes(){
+    	return "notes/addnotes";
+    }
+    
+    @RequestMapping("/laws")
+    public String laws(){
+    	return "laws";
+    }
+    
+    @RequestMapping("/lawsList")
+    public String lawsList(){
+    	return "laws/lawsList";
+    }
+    
+    @RequestMapping("/addLaws")
+    public String addLaws(){
+    	return "laws/addlaws";
+    }
+    
 }

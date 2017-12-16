@@ -25,7 +25,7 @@
         <javaClientGenerator targetPackage="online.incc.mapper" targetProject="src/main/java"
                              type="XMLMAPPER"/>
 
-        <table tableName="news">
+        <table tableName="notes">
             <!--mysql 配置-->
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
             <!--oracle 配置-->
