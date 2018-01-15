@@ -47,7 +47,7 @@ public class LawsController {
 		
 		if(Lawss != null && Lawss.size()>0) {
 			for(Laws n:Lawss) {
-				String link = inccBase + "/fileupload/html/Laws/" + n.getLink();
+				String link = inccBase + "/fileupload/html/laws/" + n.getLink();
 				n.setLink(link);
 			}
 		}

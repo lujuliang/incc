@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>网络商品合规资质认证系统</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">  
+  <link th:href="@{/css/incc2/style2.css}" rel="stylesheet" type="text/css"/>
+  <link th:href="@{/css/incc2/swiper.min.css}" rel="stylesheet" type="text/css"/>
+  <link th:href="@{/css/index2/common(1).css}" rel="stylesheet" type="text/css">
+  
+  <script type="text/javascript" th:src="@{/js/jquery-1.11.2.min.js}"></script>
+  <script th:src="@{/js/bootstrap.min.js}"></script>
+  <script th:src="@{/js/swiper.min.js}"></script>
+</head>
+<body>
+	<!--header
+	<nav class="navbar navbar-default overflow" role="navigation" id="logo">
+		<div class="container">
+			<div class="navbar-header">
+				<div class="navbar-brand" href="#"><img th:src="@{images/index2/sylogo.jpg"/></div>
+			</div>
+			<div>
+				<ul class="nav navbar-nav">
+					<li><a href="#">首页</a></li>
+					<li><a href="#">案例展示</a></li>
+					<li><a href="#">新闻中心</a></li>
+					<li><a href="#">法律法规</a></li>
+					<li><a href="#">通知公告</a></li>
+					<li class="text-right login"><a href="#">登录</a>/ <a href="#">注册</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	-->
+	
+	<div class="topbader">
+	  <div class="wrapper">
+		<a class="tlogos" href="http://39.106.118.4/"><img th:src="@{images/index2/logo_sy.png}"><h1>商品资质合规认证</h1><p>www.incc.online</p></a>
+		<ul class="menu_list">
+		  <li><a href="http://39.106.118.4/">首页</a></li>
+		  <li><a href="http://39.106.118.4/incc0">案例展示</a></li>
+		  <li><a href="http://39.106.118.4/news">新闻中心</a></li>
+		  <li><a href="http://39.106.118.4/laws">法律法规</a></li>
+		  <li><a href="http://39.106.118.4/notes">通知公告</a></li>
+		</ul>
+		<ul class="tool_list">
+		  <li><a href="http://39.106.118.4/login" target="_blank">登录</a></li>
+		  <li style="width:10px;">/</li>
+		  <li><a href="http://39.106.118.4/register" target="_blank">注册</a></li>
+		</ul>
+	  </div>
+	</div>
+	
+	<div class="row text-center banner overflow"><img th:src="@{images/index2/banner1.jpg}" width="1200" height="400" alt=""/>
+</div>
+	<div class="row zxgg overflow">
+		<div class="w">
+			<div class="col-md-10 col-md-offset-2"><div class="gonggao"><img th:src="@{images/index2/gonggao.png}" alt=""/> 最新公告</div>
+				<ul>
+					<li>
+						<a href="#">此处是相关通知公告的内容。</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+			<div class="col-md-12 text-center whiteBar overflow">
+				<a href="#">
+				<img th:src="@{images/index2/banner.jpg}" width="880" height="88" alt=""/> </a>
+			</div>
+	</div>
+	<div class="row">
+		<div class="w news overflow">
+			<div class="col-md-8">
+			<p>　由中国保护消费者基金会发起的“安全消费中国行暨中国网络商品资质合规识别计划”（简称INCC计划）6月26日在北京启动。中国保护消费者基金会的有关领导，嘉宾及媒体界的代表参加了启动仪式。</p>
+
+		　　<p>	启动仪式上，中国保护消费者基金会副理事长黄殿龙作了《关于网络商品资质合规情况普查》的报告。报告指出，我国网络商品交易发展迅速，成就举世瞩目，在推动经济发展、社会进步和促进创新等方面发挥了巨大作用。但是，目前我国不同种类的商品资质合规审查与批准由多个政府管理部门管辖，审查与批准信息公示在各个部门的官网中还无法实现信息互通互联，如一座座信息孤岛。普通消费者在网络商品交易中面对三无伪劣产品时，无法便捷、快速有效的识别商品合规信息，网络商品交易的虚拟化、碎片化、自由化、低准入等特征，进一步加剧了消费者的信息不均弱势地位，也给三无伪劣产品提供了滋生的机会。这是目前网络商品交易中消费者权益保护工作面临的挑战。</p>
+
+		　　<p>黄殿龙认为，核实商品资质合规与否，核实商品合规资质真实性，需要具备多个领域的专业知识，普通消费者是无法短时间内全部掌握的。这意味着普通消费者在互联网进行商品选购时，大多无法立即判断所购商品是否符合我国有关法律法规要求，或是判断产品合规资质的真实性，给消费者自身的权益保障带来了极大的不确定性。这一问题同样为网络商品经营者带来困扰，三无伪劣产品混在合规商品中滥竽充数，以次充好，扰乱了正常的经营秩序，给合法合规商家带来损失。从长远来看这也是网络商品交易活动持续发展的制约因素之一。</p>
+					</div>
+			<div class="col-md-4"><img th:src="@{images/index2/136406271_14987883759061n.jpg}"/></div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="w hezuo">
+			<div class="col-md-3"><a href="#"><img th:src="@{images/index2/hezuo.jpg}"/></a></div>
+			<div class="col-md-9 padding-left">
+				<ul class="overflow">
+					<li><a href="http://39.106.118.4/register"><img th:src="@{images/index2/case_icon_01.png}"/><br/>注册INCC帐号</a></li>
+					<li><a href="#"><img th:src="@{images/index2/case_icon_02.png}"/><br/>选择方案</a></li>
+					<li><a href="#"><img th:src="@{images/index2/case_icon_03.png}"/><br/>缴纳费用</a></li>
+					<li><a href="#"><img th:src="@{images/index2/case_icon_04.png}"/><br/>交付使用</a></li>
+					<li class="active"><a href="#"><img th:src="@{images/index2/case_icon_05.png}"/><br/>技术维护</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="row fwkh">
+		<div class="w overflow">
+			<h3 class="text-center">服务<span class="text-danger">客户</span></h3>
+			<div class="col-md-12 swiper-container">
+				<ul class="overflow swiper-wrapper">
+					<li class="swiper-slide"><a href="#"><img th:src="@{images/index2/footer_ico_27.jpg}"></a></li>
+
+					<li class="swiper-slide"><a href="#"><img th:src="@{images/index2/footer_ico_26.jpg}"></a></li>
+
+					<li class="swiper-slide"><a href="#"><img th:src="@{images/index2/footer_ico_25.jpg}"></a></li>
+
+					<li class="swiper-slide"><a href="#"><img th:src="@{images/index2/footer_ico_24.jpg}"></a></li>
+
+					<li class="swiper-slide"><a href="#"><img th:src="@{images/index2/footer_ico_23.jpg}"></a></li>
+
+					<li class="swiper-slide"><a href="#"><img th:src="@{images/index2/footer_ico_22.jpg}"></a></li>
+
+					<li class="swiper-slide"><a href="#"><img th:src="@{images/index2/footer_ico_21.jpg}"></a></li>
+
+					<li class="swiper-slide"><a href="#"><img th:src="@{images/index2/footer_ico_20.jpg}"></a></li>
+
+					<li class="swiper-slide"><a href="#"><img th:src="@{images/index2/footer_ico_19.jpg}"></a></li>
+
+					<li class="swiper-slide"><a href="#"><img th:src="@{images/index2/footer_ico_18.jpg}"></a></li>
+
+					<li class="swiper-slide"><a href="#"><img th:src="@{images/index2/footer_ico_17.jpg}"></a></li>
+
+					<li class="swiper-slide"><a href="#"><img th:src="@{images/index2/footer_ico_16.jpg}"></a></li>
+
+					<li class="swiper-slide"><a href="#"><img th:src="@{images/index2/footer_ico_15.jpg}"></a></li>
+
+					<li class="swiper-slide"><a href="#"><img th:src="@{images/index2/footer_ico_14.jpg}"></a></li>
+
+					<li class="swiper-slide"><a href="#"><img th:src="@{images/index2/footer_ico_13.jpg}"></a></li>
+
+					<li class="swiper-slide"><a href="#"><img th:src="@{images/index2/footer_ico_12.jpg}"></a></li>
+
+					<li class="swiper-slide"><a href="#"><img th:src="@{images/index2/footer_ico_11.jpg}"></a></li>
+
+					<li class="swiper-slide"><a href="#"><img th:src="@{images/index2/footer_ico_10.jpg}"></a></li>
+
+					<li class="swiper-slide"><a href="#"><img th:src="@{images/index2/footer_ico_09.jpg}"></a></li>
+
+					<li class="swiper-slide"><a href="#"><img th:src="@{images/index2/footer_ico_08.jpg}"></a></li>
+
+					<li class="swiper-slide"><a href="#"><img th:src="@{images/index2/footer_ico_07.jpg}"></a></li>
+
+					<li class="swiper-slide"><a href="#"><img th:src="@{images/index2/footer_ico_06.jpg}"></a></li>
+
+					<li class="swiper-slide"><a href="#"><img th:src="@{images/index2/footer_ico_05.jpg}"></a></li>
+
+					<li class="swiper-slide"><a href="#"><img th:src="@{images/index2/footer_ico_04.jpg}"></a></li>
+
+					<li class="swiper-slide"><a href="#"><img th:src="@{images/index2/footer_ico_03.jpg}"></a></li>
+
+					<li class="swiper-slide"><a href="#"><img th:src="@{images/index2/footer_ico_02.jpg}"></a></li>
+
+					<li class="swiper-slide"><a href="#"><img th:src="@{images/index2/footer_ico_01.jpg}"></a></li>
+				</ul>
+                <!-- Add Arrows -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="w">
+			<div class="col-md-6 lxwm">
+				<h4 class="title overflow"><span>联系我们</span><span>&nbsp;</span></h4>
+				<ul>
+					<li class="col-md-6">
+						<a href="#">
+							<div class="row">
+								<h4>项目洽谈</h4>
+								<div class="col-md-7">
+									<ul>
+										<li>李经理</li>
+										<li>18766165023</li>
+										<li>li@163.com</li>
+									</ul>
+								</div>
+								<div class="col-md-5">
+									<img th:src="@{images/index2/manager_shou.jpg}"/>
+								</div>
+							</div>
+						</a>
+					</li>
+					<li class="col-md-6">
+						<a href="#">
+							<div class="row">
+								<h4>地方区域洽谈</h4>
+								<div class="col-md-7">
+									<ul>
+										<li>李经理</li>
+										<li>18766165023</li>
+										<li>li@163.com</li>
+									</ul>
+								</div>
+								<div class="col-md-5">
+									<img th:src="@{images/index2/manager_wang.jpg}"/>
+								</div>
+							</div>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div class="col-md-6 alzs">
+				<h4 class="title overflow"><span>案例展示</span><span></span></h4>
+				<ul>
+					<li><a href="http://39.106.118.4/incc0"><img th:src="@{images/index2/case01.jpg}"></a></li>
+
+					<li><a href="http://39.106.118.4/incc0"><img th:src="@{images/index2/case02.jpg}"></a></li>
+
+					<li><a href="http://39.106.118.4/incc0"><img th:src="@{images/index2/case03.jpg}"></a></li>
+
+					<li><a href="http://39.106.118.4/incc0"><img th:src="@{images/index2/case04.jpg}"></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="row mfzc overflow">
+		<div class="w text-center">
+			<h2>现在注册，即可享受免费生成二维码INCC资质认证</h2>
+			<a href="http://39.106.118.4/register" class="btn mfzcBtn">免费注册</a>
+			<div class="weChatCodeBox"><span><span><img th:src="@{images/index2/syweixin.png}"></span></span><strong>INCC资质认证</strong></div>
+		</div>
+	</div>
+	<div class="row footer">
+		<div class="w">
+			<dl class="col-md-4">
+			  <dt>
+				<span class="iconBox"></span>
+				<p>售前咨询</p>
+				<p>400-000-0000</p>
+			  </dt>
+			  <dd><a href="#"><em class="icon01"></em><span>购买咨询</span></a></dd>
+			  <dd><a href="#"><em class="icon02"></em><span>INCC资质认证解决方案</span></a></dd>
+			  <dd><a href="#"><em class="icon03"></em><span>灵活的合作方式</span></a></dd>
+			  <dd><a href="#"><span>1对1贴心售后服务</span></a></dd>
+			</dl>
+
+			<ul class="col-md-8">
+			  <li>
+				<div class="titleBox">INCC资质认证</div>
+				<ul>
+				  <li><a href="#">关于我们</a></li>
+				  <li><a href="http://39.106.118.4/incc0">案例展示</a></li>
+				</ul>
+			  </li>
+			  <li>
+				<div class="titleBox">服务与支持</div>
+				<ul>
+				  <li><a href="#">代理支持</a></li>
+				  <li><a href="#">技术支持</a></li>
+				</ul>
+			  </li>
+			  <li>
+				<div class="titleBox">快速入口</div>
+				<ul>
+				  <li><a href="http://www.7cha.co/">查询平台</a></li>
+				  <li><a href="http://39.106.118.4/register">企业申请试用</a></li>
+				  <li><a href="http://39.106.118.4/register" target="_blank">免费注册</a></li>
+				</ul>
+			  </li>
+			  <li>
+				<div class="titleBox">其它</div>
+				<ul>
+				  <li><a href="#">客户合作</a></li>
+				  <li><a href="#">地方合作</a></li>
+				</ul>
+			  </li>
+			</ul>
+		</div>
+	</div>
+    
+	<div class="row banquan">
+   		 © 2017 incc.online 版权所有 沪ICP备001号-1
+    </div>
+    <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper('.swiper-container', {
+      slidesPerView: 6,
+      slidesPerColumn: 2,
+      spaceBetween: 5,
+	  loop:true,
+      loopAdditionalSlides:1,
+	  loopFillGroupWithBlank:true,
+	  autoplay:true,
+	  delay: 5000,
+	  navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+  </script>
+</body>
+</html>

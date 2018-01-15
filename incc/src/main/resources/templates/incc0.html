@@ -8,9 +8,17 @@
 <link th:href="@{/css/index2/style.css}" rel="stylesheet" type="text/css">
 <link th:href="@{/css/index2/common(1).css}" rel="stylesheet" type="text/css">
 <link th:href="@{/css/index2/style(1).css}" rel="stylesheet" type="text/css">
+<link th:href="@{/css/news.css}" rel="stylesheet" type="text/css">
 <script th:src="@{/js/index2/hm.js}"></script>
 <script th:src="@{/js/index2/hm2.js}"></script>
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" th:href="@{/css/jquery.dataTables.min.css}" />
+<link th:href="@{/font-awesome/css/font-awesome.css}" rel="stylesheet" />
+<link rel="stylesheet" th:href="@{/css/matrix-style.css}" />
+<!-- <link rel="stylesheet" th:href="@{/css/matrix-media.css}" /> -->
 <script type="text/javascript" th:src="@{/js/jquery-1.11.2.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/jquery.dataTables.min.js}"></script>
 
 </head>
 <body>
@@ -32,120 +40,39 @@
   </div>
 </div>
 
-<div class="mainNewsContentBox">
-	<div class="mainNewsDetailBox">
-		<div class="itemBox">
-			<h1 id="title" class="title" data-gid="442k6re841r9ag9d6s6dt3utod0"
-				data-channel="6" data-rid="18031ddfc095b8dc" data-type="news"
-				style="margin-top: -4px; margin-bottom: 20px; padding: 0px; font-size: 28px; line-height: 1.2; color: rgb(51, 51, 51); font-family: &amp; quot;Hiragino Sans GB&amp;quot;, &amp;quot;Microsoft Yahei&amp;quot;, 宋体;">商品资质合规标识（INCC
-				ICON）促进商品交易市场发展</h1>
-			<div class="content-text" id="content-text" bk="content-text"
-				style="margin: 0px; padding: 0px; font-size: 16px; line-height: 1.8em; overflow: hidden; text-align: justify; word-wrap: break-word; color: rgb(51, 51, 51); font-family: &amp; quot;Hiragino Sans GB&amp;quot;, &amp;quot;Microsoft Yahei&amp;quot;, 宋体;">
-				<p class="text"
-					style="margin-top: 1.8em; margin-bottom: 0px; padding: 0px;">商品资质合规标识（INCC
-					ICON）：是INCC计划的信息库入口，是INCC向商品经营者提供的，用于证明商品资质合规的电子凭证，INCC
-					ICON中含有与商品相对应的二维码，识别该二维码后可直接跳转至云端数据库查询该标识所对应商品的出品单位资质、商品资质信息、以及国家工商监管机构对该商品上市销售所强制要求必需取得的相关检测、备案、认证等信息；</p>
-				<p class="text"
-					style="margin-top: 1.8em; margin-bottom: 0px; padding: 0px;">INCC：中国网络商品资质合规识别计划，英文全称：Identification
-					of Network Commodity Compliance，简称
-					INCC，是由“中国保护消费者基金会-安全消费中国行”发起，基于充分保护消费者权益的主旨，用于对商品资质和品质状态进行标示的一项消费者权益保护计划
-					;</p>
-				<p class="content-img"
-					style="margin-top: 40px; margin-bottom: 30px; padding: 0px;">
-					<img
-						th:src="@{images/index2/incc/p1.jpg}"
-						style="display: block; margin: 0px auto; max-width: 100%; word-wrap: break-word !important;">
-				</p>
-				<p style="text-align: right; margin-right:50px;"><a href="https://item.btime.com/442k6re841r9ag9d6s6dt3utod0" target=" _blank"><span style="text-color:#009dd9; ">更多内容...</span></a></p>
-			</div>
+	<div class="mainNewsContentBox">
+		<div class="mainNewsDetailBox">
+			<div class="itemBox">
+				<h1 id="title" class="title" data-gid="442k6re841r9ag9d6s6dt3utod0"
+					data-channel="6" data-rid="18031ddfc095b8dc" data-type="news"
+					style="margin-top: -4px; margin-bottom: 20px; padding: 0px; font-size: 28px; line-height: 1.2; color: rgb(51, 51, 51); font-family: &amp; quot;Hiragino Sans GB&amp;quot;, &amp;quot;Microsoft Yahei&amp;quot;, 宋体;">商品资质合规标识（INCC
+					ICON）促进商品交易市场发展</h1>
+				<div class="content-text" id="content-text" bk="content-text"
+					style="margin: 0px; padding: 0px; font-size: 16px; line-height: 1.8em; overflow: hidden; text-align: justify; word-wrap: break-word; color: rgb(51, 51, 51); font-family: &amp; quot;Hiragino Sans GB&amp;quot;, &amp;quot;Microsoft Yahei&amp;quot;, 宋体;">
+					<p class="text"
+						style="margin-top: 1.8em; margin-bottom: 0px; padding: 0px;">商品资质合规标识（INCC
+						ICON）：是INCC计划的信息库入口，是INCC向商品经营者提供的，用于证明商品资质合规的电子凭证，INCC
+						ICON中含有与商品相对应的二维码，识别该二维码后可直接跳转至云端数据库查询该标识所对应商品的出品单位资质、商品资质信息、以及国家工商监管机构对该商品上市销售所强制要求必需取得的相关检测、备案、认证等信息；</p>
+					<p class="text"
+						style="margin-top: 1.8em; margin-bottom: 0px; padding: 0px;">INCC：中国网络商品资质合规识别计划，英文全称：Identification
+						of Network Commodity Compliance，简称
+						INCC，是由“中国保护消费者基金会-安全消费中国行”发起，基于充分保护消费者权益的主旨，用于对商品资质和品质状态进行标示的一项消费者权益保护计划
+						;</p>
+					<p class="content-img"
+						style="margin-top: 40px; margin-bottom: 30px; padding: 0px;">
+						<img
+							th:src="@{images/index2/incc/p1.jpg}"
+							style="display: block; margin: 0px auto; max-width: 100%; word-wrap: break-word !important;">
+					</p>
+					<p style="text-align: right; margin-right:50px;"><a href="https://item.btime.com/442k6re841r9ag9d6s6dt3utod0" target=" _blank"><span style="text-color:#009dd9; ">更多内容...</span></a></p>
+				</div>
 
+			</div>
 		</div>
 	</div>
-	</div>
-<div class="mainContentItemBox01">
-<div class="mainItemBox">
 
-<div class="mainCaseBox">
-  <p class="titeltxt"><span>案例展示</span>手机扫描商品标签上的二维码图片，即可查看商品的INCC资质认证信息，如：商品信息、生产企业、检测信息等。</p>
-  <ul class="caseBox">
-    <li>
-      <span class="case_01"><i><img th:src="@{images/index2/case01.jpg}"  title="INCC资质认证软件，INCC资质认证系统，二维码INCC资质认证，INCC资质认证管理软件，查询真伪，二维码INCC资质认证"></i></span>
-	  <span class="case_02" onclick="showcase(1);">点击查看</span>
-	  <div class="overlay"></div>
-      <p>态立方·俪人粉 -商品码</p>
-    </li>
-    <li>
-      <span class="case_01"><i><img th:src="@{images/index2/case02.jpg}" ></i></span>
-	  <span class="case_02" onclick="showcase(2);">点击查看</span>
-	  <div class="overlay"></div>
-      <p>态立方·俪人粉-商品码</p>
-    </li>
-    <li>
-      <span class="case_01"><i><img th:src="@{images/index2/case03.jpg}" ></i></span>
-	  <span class="case_02" onclick="showcase(3);">点击查看</span>
-	  <div class="overlay"></div>
-      <p>态立方·全肽粉-商品码</p>
-    </li>
-    <li>
-      <span class="case_01"><i><img th:src="@{images/index2/case04.jpg}" ></i></span>
-	  <span class="case_02" onclick="showcase(4);">点击查看</span>
-	  <div class="overlay"></div>
-      <p>态立方·时光面膜-商品码</p>
-    </li>
-  </ul>
-</div>
 
-<div class="mainContentItemBox01 mt30">
-  <div class="mainItemBox">
-    <h2>服务客户</h2>
-    <div class="mt30">
-	<ul class="clearfix caseimgListBox">
-	  <li><img th:src="@{images/index2/footer_ico_27.jpg}" ></li>
-	  <li><img th:src="@{images/index2/footer_ico_26.jpg}" ></li>
-	  <li><img th:src="@{images/index2/footer_ico_25.jpg}" ></li>
-	  <li><img th:src="@{images/index2/footer_ico_24.jpg}" ></li>
-	  <li><img th:src="@{images/index2/footer_ico_23.jpg}" ></li>
-	  <li><img th:src="@{images/index2/footer_ico_22.jpg}" ></li>
-	  <li><img th:src="@{images/index2/footer_ico_21.jpg}" ></li>
-	  <li><img th:src="@{images/index2/footer_ico_20.jpg}" ></li>
-	  <li><img th:src="@{images/index2/footer_ico_19.jpg}" ></li>
-	  <li><img th:src="@{images/index2/footer_ico_18.jpg}" ></li>
-	  <li><img th:src="@{images/index2/footer_ico_17.jpg}" ></li>
-	  <li><img th:src="@{images/index2/footer_ico_16.jpg}" ></li>
-	  <li><img th:src="@{images/index2/footer_ico_15.jpg}" ></li>
-	  <li><img th:src="@{images/index2/footer_ico_14.jpg}" ></li>
-	  <li><img th:src="@{images/index2/footer_ico_13.jpg}" ></li>
-	  <li><img th:src="@{images/index2/footer_ico_12.jpg}" ></li>
-	  <li><img th:src="@{images/index2/footer_ico_11.jpg}" ></li>
-	  <li><img th:src="@{images/index2/footer_ico_10.jpg}" ></li>
-	  <li><img th:src="@{images/index2/footer_ico_09.jpg}" ></li>
-	  <li><img th:src="@{images/index2/footer_ico_08.jpg}" ></li>
-	  <li><img th:src="@{images/index2/footer_ico_07.jpg}" ></li>
-	  <li><img th:src="@{images/index2/footer_ico_06.jpg}" ></li>
-	  <li><img th:src="@{images/index2/footer_ico_05.jpg}" ></li>
-	  <li><img th:src="@{images/index2/footer_ico_04.jpg}" ></li>
-	  <li><img th:src="@{images/index2/footer_ico_03.jpg}" ></li>
-	  <li><img th:src="@{images/index2/footer_ico_02.jpg}" ></li>
-	  <li><img th:src="@{images/index2/footer_ico_01.jpg}" ></li>
-	</ul>
-	</div>
-  </div>
-</div>
-<div class="mainContentItemBox01">
-  <div class="mainItemBox">
-    <h2>商家合作加盟</h2>
-    <ul class="itemListBox">
-      <li class="w188 h210"><em class="h80"><img th:src="@{images/index2/case_icon_01.png}"  title="INCC资质认证软件，INCC资质认证系统，二维码INCC资质认证，INCC资质认证管理软件，查询真伪，二维码INCC资质认证"></em><strong class="f16">注册INCC账号</strong><span>联系我们，升级账号权限</span></li>
-      <li class="w188 h210"><em class="h80"><img th:src="@{images/index2/case_icon_02.png}" ></em><strong class="f16">选择方案</strong><span>当您对所选的合作方案了解并认可，即可与我们签订协议</span></li>
-      <li class="w188 h210"><em class="h80"><img th:src="@{images/index2/case_icon_03.png}" ></em><strong class="f16">缴纳费用</strong><span>选择升级方案，按步骤操作支付相应金额即可享受新功能</span></li>
-      <li class="w188 h210"><em class="h80"><img th:src="@{images/index2/case_icon_04.png}" ></em><strong class="f16">交付使用</strong><span>我们按照协议规定向商家交付INCC资质认证商品，并完成操作培训</span></li>
-      <li class="w188 h210"><em class="h80"><img th:src="@{images/index2/case_icon_05.png}" ></em><strong class="f16">技术维护</strong><span>我们按照协议规定向商家提供所需的技术维护和服务支持</span></li>
-    </ul>
-  </div>
-</div>
-</div>
-</div>
-<div class="mainFooterCostBox" style="display:none;">
+<div class="mainFooterCostBox" style="display:none">
   <div class="mainHeaderBox">
     <span class="titleBox">INCC资质认证软件商品收费标准</span>
   </div>
@@ -171,13 +98,13 @@
       </li>
       <li>
         <em class="icon04"></em>
-        <span class="nameBox">商品INCC资质认证云版</span>
+        <span class="nameBox">INCC认证云版</span>
         <span class="divisionBox">|</span>
         <span class="priceBox">￥5800元/年</span>
       </li>
       <li>
         <em class="icon05"></em>
-        <span class="nameBox">商品INCC资质认证定制版</span>
+        <span class="nameBox">INCC认证定制版</span>
         <span class="divisionBox">|</span>
         <span class="priceBox">面议</span>
       </li>
@@ -341,8 +268,10 @@ function scrollTopHeight(){
 		$(".returnTopBox").hide();
 	}
 }
-
+var table;
+var table0;
 $(document).ready(function() {
+	$("#newsListBox").show();
 	jQuery.cost = function(tabtit,tab_conbox,shijian) {
 		$(tabtit).find("li").bind(shijian,function(){
 			$(this).addClass("on").siblings("li").removeClass("on");
@@ -351,6 +280,100 @@ $(document).ready(function() {
 			return false;
 		});
 	};
+	
+	
+	table = $('#datatable_laws0').DataTable( {
+    	language: {
+            "sProcessing": "处理中...",
+            "sLengthMenu": "显示 _MENU_ 项结果",
+            "sZeroRecords": "没有匹配结果",
+            "sInfo": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+            "sInfoEmpty": "显示第 0 至 0 项结果，共 0 项",
+            "sInfoFiltered": "(由 _MAX_ 项结果过滤)",
+            "sInfoPostFix": "",
+            "sSearch": "搜索:",
+            "sUrl": "",
+            "sEmptyTable": "表中数据为空",
+            "sLoadingRecords": "载入中...",
+            "sInfoThousands": ",",
+            "oPaginate": {
+                "sFirst": "首页",
+                "sPrevious": "上页",
+                "sNext": "下页",
+                "sLast": "末页"
+            },
+            "oAria": {
+                "sSortAscending": ": 以升序排列此列",
+                "sSortDescending": ": 以降序排列此列"
+            }
+        },
+        "dom": '<"top"i>rt<"bottom"flp><"clear">',
+        "searching" : false,
+        "bJQueryUI": true,
+        "sPaginationType": "full_numbers",
+        "serverSide": true,//开启服务器模式，使用服务器端处理配置datatable
+        "processing": true,//开启读取服务器数据时显示正在加载中……特别是大数据量的时候，开启此功能比较好
+         ajax : function(data, callback, settings) {
+            //封装请求参数
+            var param = getQueryCondition(data);
+
+            $.ajax({
+                type: "GET",
+                url: 'laws/laws',
+                cache : false,  //禁用缓存
+                data: param,    //传入已封装的参数
+                dataType: "json",
+                success: function(result) {
+                    var returnData = {};
+                    returnData.draw = result.draw;
+                    returnData.recordsTotal = result.recordsTotal;
+                    returnData.recordsFiltered = result.recordsFiltered;
+                    returnData.data = result.data;
+                    callback(returnData);
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    alert("查询失败");
+                }
+            });
+        },
+        "columns": [
+        	{
+             "sClass": "text-left",
+             "data": "title",
+             "render": function (data, type, full, meta) {
+                 return '<li class="news_class_li" style="height:40px;text-align:left;color:#666;padding:0 10px;line-height:40px;font-size:14px;background:url(css/index2/WebnewImages/news_list_icon_01.png) no-repeat scroll 10px center;"><a class="news_class" href="javascript:void(0)" id="'+full.link+'"><span></span>' + data + '</a><li>';
+             },
+             "bSortable": false
+         },
+            { "data": "date", "sClass": "text-right"  }
+        ],
+        columnDefs:[
+            { "orderable": false, "targets": 0 },
+            { "orderable": false, "targets": 1 }
+        ],
+    } );
+	
+	//封装查询参数
+    function getQueryCondition(data){
+        var param = {};
+        //组装排序参数
+        param.proName = $("#name-search").val();//查询条件
+        //组装分页参数
+        param.start = data.start;
+        param.length = data.length;
+        param.draw = data.draw;
+        return param;
+    }
+	
+	$("#datatable_laws0")[0].addEventListener("click",function(event){
+		if($(event.target).attr("class") == "news_class"){
+			var link = $(event.target).attr("id");
+			$("#mainLawsList").hide();
+			$("#mainLawsDetails").load(link);
+			return false;
+		}
+	});
+   
 
 	$.cost("#costItemTab","#costItemBody","click");
 });

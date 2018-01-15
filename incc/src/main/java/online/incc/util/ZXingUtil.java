@@ -33,8 +33,8 @@ public class ZXingUtil {
 
 	public static void main(String[] args) {
 		ZXingUtil
-				.encode("http://39.106.118.4/ewm/5",
-						300, 300, "C:\\Users\\Administrator.SD-20170401PRHN\\Desktop\\新建文件夹\\ewm_certer.png", "C:\\Users\\Administrator.SD-20170401PRHN\\Desktop\\新建文件夹\\ewm_5.jpg");
+				.encode("http://192.168.1.4/ewm/1",
+						300, 300, "C:\\Users\\Administrator.SD-20170401PRHN\\Desktop\\新建文件夹\\ewm_certer.png", "C:\\Users\\Administrator.SD-20170401PRHN\\Desktop\\新建文件夹\\ewm_1.jpg");
 	}
 
 	/**

@@ -97,12 +97,17 @@ public class HomeController {
     @RequestMapping("/")
     public String main0(){
 
-    	return "index2";
+    	return "incc1";
     }
     
     @RequestMapping("/news")
     public String news(){
     	return "news";
+    }
+    
+    @RequestMapping("/incc0")
+    public String incc(){
+    	return "index2";
     }
     
     @RequestMapping("/newsList")
